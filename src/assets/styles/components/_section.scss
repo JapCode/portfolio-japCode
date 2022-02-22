@@ -1,0 +1,46 @@
+@use '../utils/' as utils;
+
+.sectionBackground {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  z-index: -1;
+  &.purple {
+    background-color: utils.$color-primary;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: relative;
+    top: -140px;
+    left: 0;
+    width: 100%;
+    height: 74px;
+    background-color: inherit;
+  }
+}
+.sectionContent {
+  position: absolute;
+  top: 0;
+}
+
+.cyberpunk {
+  // width: 100vw;
+  position: relative;
+  top: -122px;
+  // padding: 5px;
+  // border: 30px solid utils.$color-primary;
+  // border-right: 5px solid utils.$color-primary;
+  // border-left: 5px solid utils.$color-primary;
+  // border-bottom: 24px solid utils.$color-primary;
+  // background-color: utils.$color-primary;
+  clip-path: polygon(
+    0 50%,
+    40% 50%,
+    calc(40% - -25px) 0px,
+    100% 0,
+    100% 100%,
+    /* 0 68px */ 0 90px
+  );
+}

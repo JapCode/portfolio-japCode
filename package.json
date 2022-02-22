@@ -1,0 +1,72 @@
+{
+  "name": "portfolio-japcode",
+  "version": "1.0.0",
+  "description": "<a href=\"https://gitmoji.dev\">   <img src=\"https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square\" alt=\"Gitmoji\"> </a> # portfolio-japCode my portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack server --config webpack.config.dev.js",
+    "dev": "webpack --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.js",
+    "format": "prettier --write '{*.jsx,src/**/*.{js,jsx}}'",
+    "lint": "eslint src/ --fix"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run lint && npm run format",
+    "post-commit": "git status",
+    "pre-push": "git status",
+    "preserveUnused": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JapCode/portfolio-japCode.git"
+  },
+  "keywords": [],
+  "author": "japCode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JapCode/portfolio-japCode/issues"
+  },
+  "homepage": "https://github.com/JapCode/portfolio-japCode#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
+    "@types/regenerator-runtime": "^0.13.1",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.6.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "dotenv-webpack": "^7.1.0",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.3",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "node-sass": "^7.0.1",
+    "prettier": "2.5.1",
+    "sass": "^1.49.8",
+    "sass-loader": "^12.4.0",
+    "simple-git-hooks": "^2.7.0",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.65.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
+  }
+}

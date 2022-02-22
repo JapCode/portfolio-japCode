@@ -1,0 +1,23 @@
+@use './utils' as utils;
+@use './components/' as *;
+@use './pages/' as *;
+@import '../fonts/stylesheet.css';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  font-family: utils.$base-font-regular;
+}
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+h1 {
+  font-family: utils.$title-font;
+}
+// body {
+//   background-color: utils.$color-primary;
+// }

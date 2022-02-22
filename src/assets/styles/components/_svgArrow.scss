@@ -1,0 +1,10 @@
+@use '../utils/' as utils;
+
+.svgArrow {
+  position: fixed;
+  bottom: 0;
+  left: calc(50% - 36.5px);
+  z-index: 1;
+  // background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
