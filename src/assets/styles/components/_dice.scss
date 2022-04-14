@@ -1,0 +1,7 @@
+@use '../utils/' as utils;
+.dice {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    height: 45vh;
+  }
+}

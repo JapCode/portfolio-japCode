@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   scroll-snap-align: start;
-  z-index: -1;
+  // z-index: -1;
   &.purple {
     background-color: utils.$color-primary;
   }
@@ -43,4 +43,12 @@
     100% 100%,
     /* 0 68px */ 0 90px
   );
+  &__bottom {
+    display: block;
+    position: relative;
+    top: -140px;
+    left: 0;
+    width: 100%;
+    height: 74px;
+  }
 }

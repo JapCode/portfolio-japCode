@@ -1,0 +1,42 @@
+@use '../utils/' as utils;
+
+.cat {
+  transform: translateY(70px);
+  transition: ease-in-out 1s;
+  &--visible {
+    transform: translateY(0);
+  }
+}
+
+.bongoCat {
+  width: 100vw;
+  height: 21vh;
+  @include utils.respond-to(600px) {
+    height: 40vh;
+  }
+}
+
+.pawLeftUp {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.pawLeftDown {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.pawRightUp {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+.pawRightDown {
+  display: none;
+  &.active {
+    display: block;
+  }
+}

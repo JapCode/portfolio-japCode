@@ -1,0 +1,42 @@
+@use '../utils/' as utils;
+
+.portfolio {
+  @extend %section-content;
+  padding-top: 44px;
+  align-items: start;
+  @include utils.respond-to(600px) {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-left: 20vw;
+    padding-bottom: 20vh;
+  }
+  &__title {
+    @extend %section-content__title-purple;
+    @include utils.respond-to(600px) {
+      text-align: start;
+      font-size: 7.2rem;
+    }
+  }
+  &__dots {
+    padding-top: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  &__dot {
+    list-style: none;
+    width: 25px;
+    height: 10px;
+    background-color: utils.$color-secondary-clean;
+    clip-path: polygon(25% 0, 100% 0%, 75% 100%, 0% 100%);
+    &.active {
+      clip-path: polygon(15% 0, 100% 0%, 85% 100%, 0% 100%);
+      width: 50px;
+      background-color: utils.$color-secondary;
+    }
+  }
+}

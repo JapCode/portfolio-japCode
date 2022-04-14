@@ -1,0 +1,28 @@
+@use '../utils/' as utils;
+
+.about {
+  @extend %section-content;
+  @include utils.respond-to(600px) {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-left: 20vw;
+    padding-bottom: 20vh;
+    padding-top: 0;
+  }
+  &__title {
+    @extend %section-content__title-purple;
+    @include utils.respond-to(600px) {
+      text-align: start;
+      font-size: 7.2rem;
+    }
+  }
+  &__description {
+    @extend %description-content--gray;
+    width: 70%;
+    @include utils.respond-to(600px) {
+      text-align: start;
+    }
+  }
+}

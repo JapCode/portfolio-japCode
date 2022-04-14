@@ -1,5 +1,67 @@
+@use '../utils/' as utils;
+
 .home {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
+  // scroll-snap-type: y proximity;
+  // overflow-y: scroll;
+  // height: 100vh;
+  // &__children {
+  //   scroll-snap-align: center;
+  // }
+}
+.custom-bg {
+  background-color: utils.$color-primary;
+  bottom: 15%;
+}
+.parallaxLanding {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    justify-content: end;
+    display: flex;
+    padding-right: 20vw;
+    padding-bottom: 20vh;
+  }
+}
+.parallaxLandingPurple {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    justify-content: end;
+    display: flex;
+    padding-right: 20vw;
+    padding-bottom: 20vh;
+  }
+}
+.parallaxAbout {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    margin-bottom: -25vh;
+  }
+}
+.parallaxSkills {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    margin-bottom: -25vh;
+    // padding-bottom: 20vh;
+  }
+}
+.parallaxPortfolio {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    justify-content: end;
+    display: flex;
+    // padding-right: 10vw;
+    // padding-bottom: 10vh;
+  }
+}
+.parallaxContact {
+  @include utils.respond-to(600px) {
+    width: 100vw;
+    justify-content: end;
+    display: flex;
+    padding-right: 20vw;
+    padding-bottom: 10vh;
+  }
 }

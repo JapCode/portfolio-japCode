@@ -2,7 +2,7 @@
 
 .svgSwitch {
   $self: &;
-  transform: translateY(50vh);
+  // transform: translateY(50vh);
   width: 419px;
   height: 387px;
   // transition: all 3s ease-in-out;
@@ -19,9 +19,9 @@
       &__back,
       &__top,
       &__front {
-        fill: utils.$color-primary;
+        fill: utils.$color-cleanPurple;
         &--stroke {
-          fill: utils.$color-clean-gray;
+          fill: utils.$color-secondPurple;
         }
       }
     }

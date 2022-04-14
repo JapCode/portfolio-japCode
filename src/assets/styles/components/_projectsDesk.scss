@@ -1,0 +1,65 @@
+@use '../utils/' as utils;
+.projectDesk {
+  min-width: 933px;
+  min-height: 416px;
+  background-color: rgba(231, 231, 231, 0.2);
+  display: grid;
+  grid-template-columns: 366px 527px;
+  // border: 1px solid utils.$color-clean-gray;
+  padding: 27px;
+  margin-top: 20px;
+  &__details {
+    padding-top: 23px;
+  }
+  &__title {
+    font-size: utils.$little-title-size;
+    color: utils.$color-secondary;
+  }
+  &__technologies {
+    padding-top: 8px;
+    font-size: utils.$text-size;
+    font-family: utils.$base-font-light;
+    color: utils.$color-secondGray;
+    display: flex;
+    gap: 10px;
+    list-style: none;
+  }
+  &__description {
+    padding-top: 23px;
+    width: 300px;
+    font-size: utils.$text-size;
+    color: utils.$color-gray;
+  }
+  &__buttons {
+    margin-top: 40px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__imgContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &--imgDesk {
+      position: absolute;
+      width: 448px;
+      height: 227px;
+      object-fit: cover;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 5px;
+    }
+    &--imgMobile {
+      position: absolute;
+      width: 166px;
+      height: 253px;
+      object-fit: cover;
+      right: 0;
+      top: 30%;
+      right: 0;
+      border-radius: 5px;
+      // transform: translate(-50%, -50%);
+    }
+  }
+}

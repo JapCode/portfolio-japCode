@@ -1,0 +1,91 @@
+.closeArrows {
+  $self: &;
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  cursor: pointer;
+  &__arrow {
+    position: absolute;
+    width: 48px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__svg {
+    stroke-dashoffset: 15;
+    stroke-dasharray: 15;
+    &--1 {
+      transform: translateY(4px);
+    }
+    &--2 {
+      transform: translateY(-4px) translateX(1px);
+    }
+  }
+  &__container {
+    position: absolute;
+    left: -40px;
+    &--active {
+      display: block;
+      #{ $self } {
+        &__svg {
+          &--move {
+            transition: 0.3s ease-in-out;
+            transform: translateX(-15px);
+          }
+          &--1,
+          &--2 {
+            animation: arrow-active 1s linear forwards;
+          }
+        }
+      }
+    }
+    &--close {
+      #{ $self } {
+        &__svg {
+          &--move {
+            transition: 0.5s ease-in-out;
+            transform: translateX(1px);
+            #{ $self }__svg {
+              &--1,
+              &--2 {
+                animation: arrow-close 1.5s linear forwards;
+              }
+            }
+          }
+          &--1,
+          &--2 {
+            animation: arrow-close 1s linear forwards;
+          }
+        }
+      }
+    }
+    &--hidden {
+      display: none;
+    }
+  }
+}
+@keyframes arrow-active {
+  from {
+    stroke-dashoffset: 15;
+    stroke-dasharray: 15;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+@keyframes arrow-close {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 15;
+    stroke-dasharray: 15;
+  }
+  100% {
+    opacity: 0;
+  }
+}

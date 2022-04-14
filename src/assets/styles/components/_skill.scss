@@ -1,0 +1,21 @@
+@use '../utils/' as utils;
+.skill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 122px;
+  background-color: utils.$color-primary;
+  box-shadow: utils.$skill-cards-shadow;
+  text-decoration: none;
+  &__name {
+    padding-top: 10px;
+    font-family: utils.$base-font-regular;
+    font-size: utils.$text-size;
+    color: utils.$color-clean;
+    font-weight: 400;
+    // font-size: 14px;
+    line-height: 17px;
+  }
+}

@@ -1,0 +1,138 @@
+@use '../utils/' as utils;
+
+.skills {
+  @extend %section-content;
+  @include utils.respond-to(600px) {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-left: 20vw;
+    // padding-bottom: 20vh;
+    padding-top: 0;
+    height: 100vh;
+    overflow: visible;
+  }
+  // &__details {
+  //   // width: 50vw;
+  // }
+  &.bg--active {
+    padding-top: 40px;
+    background-color: utils.$color-primary;
+  }
+  position: relative;
+  &__title {
+    @extend %section-content__title-white;
+    @include utils.respond-to(600px) {
+      text-align: start;
+      font-size: 7.2rem;
+    }
+  }
+  &__description {
+    @extend %description-content--white;
+  }
+  &__container {
+    width: 100%;
+    margin-top: 28px;
+    padding: 25px 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    grid-gap: 30px;
+    background-color: white;
+    @include utils.respond-to(600px) {
+      margin-bottom: 100px;
+      height: 600px;
+      // grid-gap: 15px;
+      grid-template-columns: repeat(3, 1fr);
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 88% 100%, 0 100%);
+    }
+  }
+  &__mySkills {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include utils.respond-to(600px) {
+      gap: 15px;
+    }
+    // &.--secondary {
+    //   padding-top: 61px;
+    // }
+    &:nth-child(2) {
+      padding-top: 61px;
+      @include utils.respond-to(600px) {
+        padding-top: 16px;
+      }
+    }
+  }
+}
+.skillsView {
+  height: 170vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  align-items: center;
+  margin: 0;
+  @include utils.respond-to(600px) {
+    margin: 0;
+    padding-top: 0;
+    height: 100vh;
+    // padding-top: 0;
+  }
+}
+.transitionEffect {
+  background-color: utils.$color-secondary;
+  transform: translateY(200vh);
+  display: none;
+  width: 100vw;
+  height: 200vh;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  &.active {
+    &--up {
+      display: block;
+      // width: 100vw;
+      // height: 200vh;
+      animation: button--up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      opacity: 1;
+    }
+    &--down {
+      transform: translateY(0vh);
+      display: block;
+      opacity: 1;
+      // opacity: 1;
+      // right: 0;
+      // position: absolute;
+      // width: 100vw;
+      // height: 200vh;
+      animation: button--down 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  }
+}
+@keyframes button--up {
+  0% {
+    transform: translateY(200vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-20vh);
+  }
+}
+@keyframes button--down {
+  0% {
+    opacity: 1;
+    transform: translateY(-20vh);
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200vh);
+    opacity: 0;
+  }
+}

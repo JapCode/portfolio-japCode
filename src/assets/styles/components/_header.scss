@@ -1,0 +1,15 @@
+.navigation {
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  &__button {
+    all: unset;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 11;
+  }
+}

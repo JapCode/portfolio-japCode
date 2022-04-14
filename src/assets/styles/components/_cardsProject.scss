@@ -1,0 +1,62 @@
+@use '../utils/' as utils;
+
+.project {
+  min-width: 300px;
+  min-height: 470px;
+  background-color: utils.$color-clean;
+  border: 1px solid utils.$color-clean-gray;
+  padding: 8px;
+  margin-top: 20px;
+  &__title {
+    font-size: utils.$little-title-size;
+    color: utils.$color-secondary;
+  }
+  &__technologies {
+    font-size: utils.$text-size;
+    font-family: utils.$base-font-light;
+    color: utils.$color-secondGray;
+    display: flex;
+    gap: 10px;
+  }
+  &__btnContainer {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    gap: 10px;
+  }
+  &__btn {
+    all: unset;
+    color: utils.$color-secondary;
+    font-size: utils.$text-size;
+  }
+  &__container {
+    position: relative;
+    height: 20px;
+  }
+  &__description {
+    width: 100%;
+    position: absolute;
+    // clip-path: polygon(0 0, 100% 0, 99% 0, 66% 0, 54% 14%, 0 14%, 0 0);
+    // height: 20px;
+    &--cPEffect {
+      // display: block;
+      width: 100%;
+      height: 20px;
+      background-color: utils.$color-clean;
+      clip-path: polygon(
+        100% 0px,
+        100% 0px,
+        40% 0,
+        30% 100%,
+        30% 100%,
+        0px 100%,
+        0px 0px
+      );
+    }
+  }
+  &__img {
+    width: 285px;
+    height: 375px;
+    object-fit: cover;
+  }
+}

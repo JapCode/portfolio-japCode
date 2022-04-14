@@ -27,9 +27,6 @@ function Section({ children, backgroundPurple }) {
     }
   }, [isVisible]);
   return useMemo(() => {
-    {
-      console.log('Section');
-    }
     return (
       <>
         <div

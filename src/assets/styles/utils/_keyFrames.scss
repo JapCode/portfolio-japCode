@@ -1,0 +1,74 @@
+@use './mixins' as *;
+
+%slide-fwd-top {
+  @include keyframes('slide-fwd-top') {
+    0% {
+      -webkit-transform: translateZ(-160px) translateY(200vh);
+      transform: translateZ(-160px) translateY(200vh);
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+      transform: translateZ(0) translateY(0);
+    }
+  }
+  @include animate(
+    'slide-fwd-top',
+    1.1s,
+    cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    both
+  );
+}
+%slide-fwd-bottom {
+  @include keyframes('slide-fwd-bottom') {
+    0% {
+      -webkit-transform: translateZ(0) translateY(0);
+      transform: translateZ(0) translateY(0);
+    }
+    100% {
+      -webkit-transform: translateZ(-160px) translateY(200vh);
+      transform: translateZ(-160px) translateY(200vh);
+    }
+  }
+  @include animate(
+    'slide-fwd-bottom',
+    1.1s,
+    cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    both
+  );
+}
+// %slide-in-bottom {
+//   @include keyframes('slide-in-bottom') {
+//     0% {
+//       transform: translateY(1000px);
+//       opacity: 0;
+//     }
+//     100% {
+//       transform: translateY(0);
+//       opacity: 1;
+//     }
+//   }
+//   @include animate(
+//     'slide-in-bottom',
+//     1s,
+//     cubic-bezier(0.25, 0.46, 0.45, 0.94),
+//     both
+//   );
+// }
+// %slide-in-bottom-reverse {
+//   @include keyframes('slide-in-bottom-reverse') {
+//     0% {
+//       transform: translateY(0);
+//       opacity: 0;
+//     }
+//     100% {
+//       transform: translateY(500px);
+//       opacity: 0;
+//     }
+//   }
+//   @include animate(
+//     'slide-in-bottom-reverse',
+//     1.5s,
+//     cubic-bezier(0.25, 0.46, 0.45, 0.94),
+//     both
+//   );
+// }
