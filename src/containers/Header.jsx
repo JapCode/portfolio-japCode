@@ -15,7 +15,7 @@ function Header() {
   };
   return (
     <nav className="navigation">
-      {window.width > 600 ? (
+      {window.width > 900 ? (
         <Navigation />
       ) : (
         <>

@@ -2,16 +2,24 @@
 
 .project {
   min-width: 300px;
-  min-height: 470px;
+  // min-height: 470px;
+  min-height: 485px;
   background-color: utils.$color-clean;
   border: 1px solid utils.$color-clean-gray;
   padding: 8px;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    margin-top: 40px;
+  }
   &__title {
     font-size: utils.$little-title-size;
     color: utils.$color-secondary;
   }
   &__technologies {
+    // padding-top: 10px;
     font-size: utils.$text-size;
     font-family: utils.$base-font-light;
     color: utils.$color-secondGray;
@@ -21,7 +29,7 @@
   &__btnContainer {
     display: flex;
     align-items: center;
-    padding-top: 10px;
+    // padding-top: 15px;
     gap: 10px;
   }
   &__btn {

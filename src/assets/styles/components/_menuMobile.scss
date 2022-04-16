@@ -47,6 +47,9 @@
       font-family: utils.$base-font-bold;
       text-decoration: none;
       font-size: utils.$title-size;
+      @include utils.respond-to(utils.$breakPoint-tablet) {
+        padding-left: 20vw;
+      }
     }
     // &--active {
     //   border-bottom: 2px solid red;
@@ -72,7 +75,11 @@
     padding-bottom: 30px;
     transition: all 2s ease-in-out;
     img {
-      scale: (1.4);
+      transform: scale(1.4);
+      -webkit-transform: scale(1.4);
+      -moz-transform: scale(1.4);
+      -ms-transform: scale(1.4);
+      -o-transform: scale(1.4);
     }
     &--active {
       animation: opacity-active 1s 2.5s ease-in-out both;

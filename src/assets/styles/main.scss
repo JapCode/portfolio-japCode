@@ -40,7 +40,7 @@ h1 {
     position: absolute;
     bottom: -8px;
     left: -15px;
-    @include utils.respond-to(600px) {
+    @include utils.respond-to(utils.$breakPoint-laptop) {
       transform: scale(2);
       bottom: 8px;
       left: -10px;

@@ -3,8 +3,15 @@
   width: 100vw;
   padding-left: 40px;
   // height: 100vh;
-  @include utils.respond-to(600px) {
-    width: 15vw;
+  @include utils.respond-to(utils.$breakPoint-tablet) {
     height: 70vh;
+    padding-bottom: 10vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    // padding-right: 20vw;
+    // padding-left: 50px;
+    width: 22vw;
+    padding-bottom: 0;
+    // height: 70vh;
   }
 }

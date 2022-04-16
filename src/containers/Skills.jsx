@@ -120,7 +120,7 @@ function Skills() {
 
   useEffect(() => {
     if (isVisible) {
-      let columnsToRender = windowSize.width > 600 ? 3 : 2;
+      let columnsToRender = windowSize.width > 900 ? 3 : 2;
       calcArrays(columnsToRender, skillsArray, skillsRender);
     }
   }, [isVisible]);

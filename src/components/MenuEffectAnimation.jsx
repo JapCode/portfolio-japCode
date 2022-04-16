@@ -62,15 +62,17 @@ function MenuEffectAnimation() {
     if (itemsRef.current !== null) {
       for (let i = 0; i < itemsRef.current.children.length; i++) {
         thirdTimeOut.current = setTimeout(() => {
-          itemsRef.current.children[i].classList.add(
-            'menuEffectAnimation__item--inActive',
-          );
-          itemsRef.current.children[i].classList.remove(
-            'menuEffectAnimation__item--active',
-          );
-          itemsRef.current.children[i].classList.remove(
-            'menuEffectAnimation__item--full',
-          );
+          if (itemsRef.current !== null) {
+            itemsRef.current.children[i].classList.add(
+              'menuEffectAnimation__item--inActive',
+            );
+            itemsRef.current.children[i].classList.remove(
+              'menuEffectAnimation__item--active',
+            );
+            itemsRef.current.children[i].classList.remove(
+              'menuEffectAnimation__item--full',
+            );
+          }
         }, i * 100);
       }
     }

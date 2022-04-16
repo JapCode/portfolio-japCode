@@ -1,7 +1,10 @@
 @use '../utils/' as utils;
 .dice {
-  @include utils.respond-to(600px) {
-    width: 100vw;
+  width: 100vw;
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    height: 30vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
     height: 45vh;
   }
 }

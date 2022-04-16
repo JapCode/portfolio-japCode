@@ -4,17 +4,38 @@
   @extend %section-content;
   padding-top: 44px;
   align-items: start;
-  @include utils.respond-to(600px) {
-    width: 1000px;
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    padding-top: 0;
+    align-items: start;
+    justify-content: center;
+    margin: 0;
+    padding-left: 20vw;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    // width: 1000px;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: start;
-    margin-left: 20vw;
+    padding-left: 10vw;
+    // margin-left: 20vw;
     padding-bottom: 20vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
+    padding-left: 20vw;
+  }
+  &__cardsContainer {
+    padding-left: calc(50% - 150px);
+    @include utils.respond-to(utils.$breakPoint-tablet) {
+      padding-left: calc(40% - 150px);
+    }
+    @include utils.respond-to(utils.$breakPoint-desktop) {
+      margin-left: 5vw;
+    }
   }
   &__title {
     @extend %section-content__title-purple;
-    @include utils.respond-to(600px) {
+    @include utils.respond-to(utils.$breakPoint-desktop) {
       text-align: start;
       font-size: 7.2rem;
     }

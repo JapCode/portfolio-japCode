@@ -1,7 +1,7 @@
 @use './mixins' as *;
 
 %slide-fwd-top {
-  @include keyframes('slide-fwd-top') {
+  @include keyframes(slide-fwd-top) {
     0% {
       -webkit-transform: translateZ(-160px) translateY(200vh);
       transform: translateZ(-160px) translateY(200vh);
@@ -12,25 +12,31 @@
     }
   }
   @include animate(
-    'slide-fwd-top',
+    slide-fwd-top,
     1.1s,
     cubic-bezier(0.25, 0.46, 0.45, 0.94),
     both
   );
 }
 %slide-fwd-bottom {
-  @include keyframes('slide-fwd-bottom') {
+  @include keyframes(slide-fwd-bottom) {
     0% {
       -webkit-transform: translateZ(0) translateY(0);
       transform: translateZ(0) translateY(0);
+      -moz-transform: translateZ(0) translateY(0);
+      -ms-transform: translateZ(0) translateY(0);
+      -o-transform: translateZ(0) translateY(0);
     }
     100% {
       -webkit-transform: translateZ(-160px) translateY(200vh);
       transform: translateZ(-160px) translateY(200vh);
+      -moz-transform: translateZ(-160px) translateY(200vh);
+      -ms-transform: translateZ(-160px) translateY(200vh);
+      -o-transform: translateZ(-160px) translateY(200vh);
     }
   }
   @include animate(
-    'slide-fwd-bottom',
+    slide-fwd-bottom,
     1.1s,
     cubic-bezier(0.25, 0.46, 0.45, 0.94),
     both

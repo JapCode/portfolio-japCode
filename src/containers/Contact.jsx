@@ -15,7 +15,6 @@ function Contact() {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
-  console.log(socialMedia);
   return (
     <div className="contact" ref={containRef}>
       <div
@@ -35,7 +34,7 @@ function Contact() {
         <ul className="contact__socialMedia">
           {socialMedia.map((social, index) => (
             <ContactItem
-              index={index}
+              key={index}
               url={social.url}
               icon={social.icon}
               name={social.name}

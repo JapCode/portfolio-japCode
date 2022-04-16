@@ -11,13 +11,15 @@ function Projects() {
         <TitleDecorator />
         <h1 className="portfolio__title">Portafolio</h1>
       </span>
-      {windowSize.width > 768 ? <CardsProjectsDesk /> : <CardsProjects />}
-      <ul className="portfolio__dots">
-        <li className="portfolio__dot active" />
-        <li className="portfolio__dot" />
-        <li className="portfolio__dot" />
-        <li className="portfolio__dot" />
-      </ul>
+      <div className="portfolio__cardsContainer">
+        {windowSize.width > 900 ? <CardsProjectsDesk /> : <CardsProjects />}
+        <ul className="portfolio__dots">
+          <li className="portfolio__dot active" />
+          <li className="portfolio__dot" />
+          <li className="portfolio__dot" />
+          <li className="portfolio__dot" />
+        </ul>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,15 @@
   @extend %section-content;
   padding-top: 87px;
   align-items: start;
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    padding-bottom: 20vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 50vw;
     display: flex;
     justify-content: center;
@@ -13,7 +21,7 @@
   }
   &__title {
     @extend %section-content__title-white;
-    @include utils.respond-to(600px) {
+    @include utils.respond-to(utils.$breakPoint-desktop) {
       text-align: start;
       font-size: 7.2rem;
     }

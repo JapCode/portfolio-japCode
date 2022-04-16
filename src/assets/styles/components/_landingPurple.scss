@@ -3,14 +3,19 @@
 .landingPurple {
   @extend %section-content;
   align-items: center;
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    padding-left: 10vw;
+    padding-bottom: 10vh;
     width: 50vw;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
     display: flex;
     justify-content: center;
     align-items: start;
     padding-left: 20vw;
-    padding-bottom: 20vh;
+    padding-bottom: 25vh;
   }
+
   &__container {
     -webkit-transform: translateZ(-160px) translateY(500px);
     transform: translateZ(-160px) translateY(500px);

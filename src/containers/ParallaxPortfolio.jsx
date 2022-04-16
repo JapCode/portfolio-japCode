@@ -9,7 +9,7 @@ function ParallaxPortfolio() {
   return (
     <Parallax strength={800} bgStyle={{ bottom: '10%' }}>
       <Background className="parallaxPortfolio">
-        {windowSize.width > 768 ? (
+        {windowSize.width > 600 ? (
           <CPBackgroundPortfolioFull />
         ) : (
           <CPBackgroundPortfolio />

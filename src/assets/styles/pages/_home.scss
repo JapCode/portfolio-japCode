@@ -13,25 +13,65 @@
   bottom: 15%;
 }
 .parallaxLanding {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-small) {
     width: 100vw;
-    justify-content: end;
+    justify-content: center;
     display: flex;
+  }
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    padding-right: 10vw;
+    padding-bottom: 15vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
+    width: 100vw;
+    max-width: 1920px;
     padding-right: 20vw;
     padding-bottom: 20vh;
   }
 }
 .parallaxLandingPurple {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-small) {
     width: 100vw;
-    justify-content: end;
+    justify-content: center;
     display: flex;
+  }
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    padding-right: 10vw;
+    padding-bottom: 15vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
+    width: 100vw;
+    max-width: 1920px;
     padding-right: 20vw;
     padding-bottom: 20vh;
   }
 }
 .parallaxAbout {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    width: 100vw;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    margin-bottom: -25vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
     width: 100vw;
     padding-left: 20vw;
     padding-right: 20vw;
@@ -39,16 +79,19 @@
   }
 }
 .parallaxSkills {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    padding-bottom: 10vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 100vw;
     padding-left: 20vw;
     padding-right: 20vw;
-    margin-bottom: -25vh;
+    margin-bottom: -35vh;
     // padding-bottom: 20vh;
   }
 }
 .parallaxPortfolio {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 100vw;
     justify-content: end;
     display: flex;
@@ -57,11 +100,11 @@
   }
 }
 .parallaxContact {
-  @include utils.respond-to(600px) {
+  @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 100vw;
-    justify-content: end;
+    justify-content: flex-end;
     display: flex;
-    padding-right: 20vw;
+    padding-right: 17vw;
     padding-bottom: 10vh;
   }
 }

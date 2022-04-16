@@ -3,7 +3,8 @@ import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 import PrincipalButton from '../components/PrincipalButton';
 import TitleDecorator from '../components/TitleDecoration';
 
-function About() {
+function About(prop) {
+  const { visible } = prop;
   const [isOpen, setIsOpen] = useState(false);
   const [containRef, isVisible] = useIntersectionObserver({
     rootMargin: '0px',

@@ -5,12 +5,17 @@ import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 import bongoCatAnimation from '../utils/bongoCatAnimation';
 import resetBongoCatAnimation from '../utils/resetBongoCatAnimation';
 
-function BongoCat() {
+function BongoCat(prop) {
+  const { visible } = prop;
   // const offsetY = useParallax();
-  const [containerRef, isVisible] = useIntersectionObserver({
-    rootMargin: '0px',
-    threshold: 0.8,
-  });
+  // const [containerRef, isVisible] = useIntersectionObserver({
+  //   rootMargin: '0px',
+  //   threshold: 0.8,
+  // });
+  // const [imARef, isVisible2] = useIntersectionObserver({
+  //   rootMargin: '0px',
+  //   threshold: 0.8,
+  // });
   // const [pawLeftUp, setPawLeftUp] = useState(true);
   // const [pawRightUp, setPawRightUp] = useState(false);
   // const [startAnimation, setStartAnimation] = useState(false);
@@ -38,22 +43,23 @@ function BongoCat() {
   // };
 
   useEffect(() => {
-    if (!isVisible) {
+    if (!visible) {
       if (bongoCatInterval.current) {
         clearInterval(bongoCatInterval.current);
       }
       resetBongoCatAnimation(config);
     }
-  }, [config, isVisible]);
-
+  }, [config, visible]);
   const handleAnimation = () => {
-    if (isVisible) {
+    if (visible) {
       bongoCatAnimation(config, bongoCatInterval);
     }
   };
 
   return (
     <svg
+      // ref={imARef}
+      id="bongoCat"
       className="bongoCat"
       width="270"
       height="126"
@@ -68,7 +74,7 @@ function BongoCat() {
           <g
             onTransitionEnd={handleAnimation}
             ref={cat}
-            className={`cat ${isVisible ? 'cat--visible' : ''}`}
+            className={`cat ${visible ? 'cat--visible' : ''}`}
           >
             <path
               d="M195.526 87.01L197.584 80.4151L194.824 65.4011L188.978 55.5789L187.341 53.7548L189.866 46.318L191.41 41.2666L192.579 32.2864L191.877 26.1593L185.984 27.4689L182.009 29.4801L177.004 31.9123L155.582 20.6403L140.989 15.1679L130.652 12.4551L127.471 7.31021L123.075 1.55719L117.93 5.71991L113.112 11.7067L96.5555 18.9096L84.2075 27.8431L70.9245 39.6761L64.657 47.6274L63.7216 49.8257L61.5743 54.1368L67.4613 55.9227L80.8893 60.0237L86.7763 61.8096L89.9514 55.9226L145.117 69.5486L195.526 87.01Z"
@@ -155,7 +161,7 @@ function BongoCat() {
           </g>
           <g>
             <path
-              ref={containerRef}
+              // ref={containerRef}
               className="table"
               d="M0.0057373 34.87L0.0107117 126.294H270.391L270.39 102.153L0.0057373 34.87Z"
               fill="white"

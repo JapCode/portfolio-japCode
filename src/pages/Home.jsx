@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SvgArrow from '../components/SvgArrow';
 // import Parallax from '../containers/Parallax';
 import ParallaxLanding from '../containers/ParallaxLanding';
@@ -12,6 +12,7 @@ import ParallaxContact from '../containers/ParallaxContact';
 import { animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import useWindowSize from '../hooks/UseWindowSize';
 import ArrowToTopIcon from '../components/ArrowToTopIcon';
+import { Meta, Title } from 'react-head';
 
 const options = {
   rootMargin: '0px',
@@ -36,28 +37,35 @@ function Home() {
   const windowSize = useWindowSize();
   const scrollTimeout = useRef(null);
   const scrollTime = windowSize.width > 600 ? 400 : 0;
+  const [visibleState, setVisibleState] = useState(null);
   const allSections = [
     {
+      name: 'Home',
       ref: landingRef,
       state: landingIsVisible,
     },
     {
+      name: 'Home',
       ref: landingPurpleRef,
       state: landingPurpleIsVisible,
     },
     {
+      name: 'About',
       ref: aboutRef,
       state: aboutIsVisible,
     },
     {
+      name: 'Skills',
       ref: skillsRef,
       state: skillsIsVisible,
     },
     {
+      name: 'Portfolio',
       ref: portfolioRef,
       state: portfolioIsVisible,
     },
     {
+      name: 'Contact',
       ref: contactMeRef,
       state: contactMeIsVisible,
     },
@@ -71,6 +79,7 @@ function Home() {
         allSections.forEach((section) => {
           if (section.ref.current !== null && section.state) {
             nextElement(section.ref.current.id, section.state);
+            setVisibleState(section.name);
           }
         });
       }, scrollTime);
@@ -99,6 +108,7 @@ function Home() {
   };
   return (
     <>
+      <Title>{`${visibleState} | JapCode`}</Title>
       <div id="landing" name="element-1">
         <section id="landingWhite" ref={landingRef}>
           <ParallaxLanding windowSize={windowSize} />
