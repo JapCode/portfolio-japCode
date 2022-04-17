@@ -7,12 +7,14 @@ function bongoCatAnimation(config, ref) {
   const pawRightUp = config.pawRightUp.current;
   const pawRightDown = config.pawRightDown.current;
   bongoCatInterval.current = setInterval(() => {
+    console.log('hey');
     if ((pawLeftUp, pawLeftDown, pawRightDown, pawRightUp)) {
       if (pawLeftUp.classList.contains('active')) {
         pawLeftUp.classList.remove('active');
         pawLeftDown.classList.add('active');
         pawRightUp.classList.add('active');
         pawRightDown.classList.remove('active');
+        bre;
       } else {
         pawLeftUp.classList.add('active');
         pawLeftDown.classList.remove('active');

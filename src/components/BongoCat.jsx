@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, useCallback } from 'react';
 
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 // import waitFor from '../utils/waitFor';
@@ -27,6 +27,9 @@ function BongoCat(prop) {
   const bongoCatInterval = useRef(null);
   const bongoColorBody = '#CCCCCC';
   const bongoColorPaw = '#e6b3dc';
+  const catCallback = useCallback(() => {
+    bongoCatAnimation(config, bongoCatInterval);
+  }, [bongoCatInterval]);
   const config = useMemo(() => {
     return {
       pawLeftUp,
@@ -52,7 +55,8 @@ function BongoCat(prop) {
   }, [config, visible]);
   const handleAnimation = () => {
     if (visible) {
-      bongoCatAnimation(config, bongoCatInterval);
+      // bongoCatAnimation(config, bongoCatInterval);
+      catCallback();
     }
   };
 
