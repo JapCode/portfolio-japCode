@@ -33,19 +33,22 @@
     padding-bottom: 25vh;
   }
   &__title {
-    font-family: utils.$title-font;
-    font-size: utils.$big-title-size;
-    color: utils.$color-primary;
+    // font-family: utils.$title-font;
+    // font-size: utils.$big-title-size;
+    // color: utils.$color-primary;
     padding: 0 74px;
     text-align: center;
     font-weight: 800;
+    object-fit: contain;
     @include utils.respond-to(utils.$breakPoint-tablet) {
-      width: 50%;
+      // width: 50%;
       text-align: start;
       font-size: 7.2rem;
     }
     @include utils.respond-to(utils.$breakPoint-desktop) {
-      width: 100%;
+      padding-left: 40px;
+      width: 500px;
+
       text-align: start;
       font-size: 7.2rem;
     }

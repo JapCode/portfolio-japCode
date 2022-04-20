@@ -13,6 +13,10 @@
   bottom: 15%;
 }
 .parallaxLanding {
+  margin-bottom: -15vh;
+  @include utils.respondHeight-to(600px) {
+    margin-bottom: 0;
+  }
   @include utils.respond-to(utils.$breakPoint-small) {
     width: 100vw;
     justify-content: center;
@@ -65,20 +69,31 @@
   }
 }
 .parallaxAbout {
+  margin-bottom: -25vh;
+  @include utils.respondHeight-to(600px) {
+    margin-bottom: 10vh;
+  }
+  @include utils.respondHeight-to(900px) {
+    margin-bottom: 10vh;
+  }
   @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 100vw;
     padding-left: 20vw;
     padding-right: 20vw;
-    margin-bottom: -25vh;
+    margin-bottom: -15vh;
   }
   @include utils.respond-to(utils.$breakPoint-large) {
-    width: 100vw;
-    padding-left: 20vw;
-    padding-right: 20vw;
-    margin-bottom: -25vh;
+    // width: 100vw;
+    // padding-left: 20vw;
+    // padding-right: 20vw;
+    // margin-bottom: -25vh;
   }
 }
 .parallaxSkills {
+  margin-bottom: -20vh;
+  @include utils.respondHeight-to(600px) {
+    margin-bottom: 0;
+  }
   @include utils.respond-to(utils.$breakPoint-tablet) {
     padding-bottom: 10vh;
   }

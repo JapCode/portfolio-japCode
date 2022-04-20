@@ -4,7 +4,10 @@
   $self: &;
   // transform: translateY(50vh);
   width: 419px;
-  height: 387px;
+  height: 260px;
+  @include utils.respondHeight-to(600px) {
+    height: 387px;
+  }
   // transition: all 3s ease-in-out;
   &__back,
   &__top,

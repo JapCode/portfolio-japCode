@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import useMobileMenuState from '../hooks/UseMobileMenuState';
+import useWindowSize from '../hooks/UseWindowSize';
 import IrregularBorder from './IrregularBorder';
 
 function MenuEffectAnimation() {
   const menuState = useMobileMenuState();
+  const windowSize = useWindowSize();
   // const { isActive } = prop;
   const itemsRef = useRef(null);
   const firstTimeOut = useRef(null);
@@ -124,7 +126,7 @@ function MenuEffectAnimation() {
             : 'menuEffectAnimation__border--inActive'
         }`}
       >
-        <IrregularBorder />
+        {windowSize.height > 650 && <IrregularBorder />}
       </div>
     </div>
   );

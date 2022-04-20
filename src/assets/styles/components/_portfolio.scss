@@ -1,9 +1,13 @@
 @use '../utils/' as utils;
 
 .portfolio {
+  height: 110vh;
   @extend %section-content;
   padding-top: 44px;
   align-items: start;
+  @include utils.respondHeight-to(650px) {
+    height: 100vh;
+  }
   @include utils.respond-to(utils.$breakPoint-tablet) {
     padding-top: 0;
     align-items: start;
@@ -30,6 +34,7 @@
       padding-left: calc(40% - 150px);
     }
     @include utils.respond-to(utils.$breakPoint-desktop) {
+      padding-left: 0;
       margin-left: 5vw;
     }
   }

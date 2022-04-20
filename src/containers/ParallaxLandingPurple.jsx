@@ -4,10 +4,11 @@ import SvgSwitch from '../components/SvgSwitch';
 
 function ParallaxLandingPurple(prop) {
   const { windowSize } = prop;
+  // const midStrength = windowSize.height > 1000 ? 1000 : 800;
   return (
     <Parallax
       className="custom-bg"
-      strength={windowSize.width > 600 ? 900 : 800}
+      strength={windowSize.height > 600 ? windowSize.height : 490}
       bgStyle={{ bottom: '15%' }}
     >
       <Background className="parallaxLandingPurple">

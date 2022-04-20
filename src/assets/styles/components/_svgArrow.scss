@@ -1,10 +1,14 @@
 @use '../utils/' as utils;
 
 .svgArrow {
+  opacity: 0;
   position: fixed;
   bottom: 0;
   left: calc(50% - 36.5px);
   z-index: 1;
   // background-color: transparent;
   transition: all 0.3s ease-in-out;
+  @include utils.respondHeight-to(600px) {
+    opacity: 1;
+  }
 }
