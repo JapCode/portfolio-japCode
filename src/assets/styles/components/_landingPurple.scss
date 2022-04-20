@@ -17,8 +17,8 @@
   }
 
   &__container {
-    -webkit-transform: translateZ(-160px) translateY(500px);
-    transform: translateZ(-160px) translateY(500px);
+    // -webkit-transform: translateZ(-160px) translateY(500px);
+    // transform: translateZ(-160px) translateY(500px);
   }
   &__title {
     @extend %section-content__title-white;
@@ -39,7 +39,7 @@
     // font-weight: normal;
     font-size: 36px;
     line-height: 44px;
-    animation: neonPulse 5s forwards infinite;
+    // animation: neonPulse 5s forwards infinite;
     @include utils.respond-to(600px) {
       text-align: start;
       padding: 0 74px;

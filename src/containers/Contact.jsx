@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 import ContactModal from '../Modals/ContactModal';
 import EmailForm from './EmailForm';
@@ -6,6 +6,8 @@ import PrincipalButton from '../components/PrincipalButton';
 import TitleDecorator from '../components/TitleDecoration';
 import socialMedia from '../utils/socialMedia';
 import ContactItem from '../components/ContactItem';
+import UseScrollBlock from '../hooks/UseScrollBlock';
+import { scroller } from 'react-scroll';
 
 function Contact() {
   const [containRef, isVisible] = useIntersectionObserver({
@@ -13,8 +15,22 @@ function Contact() {
     threshold: 0.5,
   });
   const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen(false);
+  const onClose = () => {
+    setIsOpen(false);
+    scroller.scrollTo('contact', {
+      duration: 0,
+      smooth: true,
+    });
+  };
   const onOpen = () => setIsOpen(true);
+  const [blockScroll, allowScroll] = UseScrollBlock();
+  useEffect(() => {
+    if (isOpen) {
+      blockScroll();
+    } else {
+      allowScroll();
+    }
+  }, [isOpen]);
   return (
     <div className="contact" ref={containRef}>
       <div

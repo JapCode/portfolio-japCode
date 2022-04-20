@@ -1,6 +1,9 @@
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 
-function ParallaxLandingPurple() {
+import useWindowSize from '../hooks/UseWindowSize';
+
+function LandingPurple() {
+  const windowSize = useWindowSize();
   const [containRef, isVisible] = useIntersectionObserver({
     rootMargin: '0px',
     threshold: 0.6,
@@ -8,16 +11,29 @@ function ParallaxLandingPurple() {
   return (
     <div ref={containRef} className="landingPurple">
       <div
-        className={`landingPurple__container ${
-          isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'
-        }`}
+        className={`landingPurple__container
+        `}
       >
         <h1 className="landingPurple__title">
           I&apos;m, <br /> Alonso Paredes
         </h1>
-        <h2 className="landingPurple__subtitle">Frontend Developer</h2>
+        <figure className="landingPurple__subtitle">
+          {windowSize.width > 768 ? (
+            <img
+              src="https://i.imgur.com/vGdmOmQ.gif"
+              title="source: imgur.com"
+              alt="frontend developer"
+            />
+          ) : (
+            <img
+              src="https://i.imgur.com/EQPNbsb.gif"
+              title="source: imgur.com"
+              alt="frontend developer"
+            />
+          )}
+        </figure>
       </div>
     </div>
   );
 }
-export default ParallaxLandingPurple;
+export default LandingPurple;

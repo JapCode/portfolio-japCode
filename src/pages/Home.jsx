@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import SvgArrow from '../components/SvgArrow';
 // import Parallax from '../containers/Parallax';
 import ParallaxLanding from '../containers/ParallaxLanding';
@@ -13,6 +13,8 @@ import { animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import useWindowSize from '../hooks/UseWindowSize';
 import ArrowToTopIcon from '../components/ArrowToTopIcon';
 import { Meta, Title } from 'react-head';
+import Landing from '../containers/Landing';
+import LandingPurple from '../components/LandingPurple';
 
 const options = {
   rootMargin: '0px',
@@ -26,7 +28,7 @@ const nextElement = (element, elementVisible) => {
     });
   }
 };
-function Home() {
+const Home = React.memo(function Home() {
   const [landingRef, landingIsVisible] = useIntersectionObserver(options);
   const [landingPurpleRef, landingPurpleIsVisible] =
     useIntersectionObserver(options);
@@ -37,7 +39,8 @@ function Home() {
   const windowSize = useWindowSize();
   const scrollTimeout = useRef(null);
   const scrollTime = windowSize.width > 600 ? 400 : 0;
-  const [visibleState, setVisibleState] = useState(null);
+  const verifyHeight = windowSize.height < 650 ? 'none' : 'block';
+  const [visibleState, setVisibleState] = useState('Home');
   const allSections = [
     {
       name: 'Home',
@@ -84,14 +87,7 @@ function Home() {
         });
       }, scrollTime);
     }
-  }, [
-    landingIsVisible,
-    landingPurpleIsVisible,
-    aboutIsVisible,
-    skillsIsVisible,
-    portfolioIsVisible,
-    contactMeIsVisible,
-  ]);
+  }, [landingIsVisible, landingPurpleIsVisible, aboutIsVisible, skillsIsVisible, portfolioIsVisible, contactMeIsVisible]);
 
   const nextSectionButton = () => {
     for (let i = 0; i < allSections.length; i++) {
@@ -113,28 +109,29 @@ function Home() {
         <section id="landingWhite" ref={landingRef}>
           <ParallaxLanding windowSize={windowSize} />
         </section>
-        <IrregularBorder backgroundPurple />
+        <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
         <section id="landingPurple" ref={landingPurpleRef}>
           <ParallaxLandingPurple windowSize={windowSize} />
         </section>
       </div>
-      <IrregularBorder />
+
+      <IrregularBorder backgroundOpacity={verifyHeight} />
       <section id="about" ref={aboutRef}>
         <ParallaxAbout />
       </section>
-      <IrregularBorder backgroundPurple />
+      <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
       <section id="skills" ref={skillsRef}>
         <ParallaxSkills />
       </section>
-      <IrregularBorder />
+      <IrregularBorder backgroundOpacity={verifyHeight} />
       <section id="portfolio" ref={portfolioRef}>
         <ParallaxPortfolio />
       </section>
-      <IrregularBorder backgroundPurple />
+      <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
       <section id="contact" ref={contactMeRef}>
         <ParallaxContact />
       </section>
-      <IrregularBorder />
+      <IrregularBorder backgroundOpacity={verifyHeight} />
       {contactMeIsVisible ? (
         <ArrowToTopIcon clickAction={toTop} />
       ) : (
@@ -142,5 +139,5 @@ function Home() {
       )}
     </>
   );
-}
+});
 export default Home;

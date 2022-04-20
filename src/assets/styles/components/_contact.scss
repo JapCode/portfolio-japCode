@@ -3,6 +3,10 @@
   @extend %section-content;
   padding-top: 87px;
   align-items: start;
+  height: 110vh;
+  @include utils.respondHeight-to(650px) {
+    height: 100vh;
+  }
   @include utils.respond-to(utils.$breakPoint-tablet) {
     display: flex;
     align-items: center;

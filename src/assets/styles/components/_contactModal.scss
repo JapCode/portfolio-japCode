@@ -12,6 +12,8 @@
   z-index: 999;
   padding: 40px 20px 20px;
   &-content {
+    overflow: scroll;
+    padding: 20px 0;
     width: 300px;
     height: 500px;
     background-color: utils.$color-clean;
@@ -19,8 +21,11 @@
     align-items: center;
     justify-content: center;
     font-size: utils.$text-size;
-    clip-path: polygon(0 0, 90% 0, 100% 5%, 100% 100%, 10% 100%, 0 95%);
-    @include utils.respond-to(600px) {
+    clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+    @include utils.respondHeight-to(550px) {
+      clip-path: polygon(0 0, 90% 0, 100% 5%, 100% 100%, 10% 100%, 0 95%);
+    }
+    @include utils.respond-to(utils.$breakPoint-tablet) {
       width: 570px;
       height: 644px;
       clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);

@@ -3,7 +3,7 @@ import useBackgroundColorUpdaterContext from '../hooks/UseBackgroundColorUpdater
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 
 function IrregularBorder(prop) {
-  const { backgroundPurple } = prop;
+  const { backgroundPurple, backgroundOpacity } = prop;
   const [backgroundColor, setBackgroundColor] = useState('#5a189a');
   const [containRef, isVisible] = useIntersectionObserver({
     root: null,
@@ -21,6 +21,7 @@ function IrregularBorder(prop) {
     borderLeft: `5px solid ${backgroundPurple ? colorOne : colorTwo}`,
     borderBottom: `24px solid ${backgroundPurple ? colorOne : colorTwo}`,
     backgroundColor: `${backgroundPurple ? colorOne : colorTwo}`,
+    display: backgroundOpacity,
   };
   const anotherSectionStyle = {
     border: `30px solid ${anotherColor}`,
@@ -28,6 +29,7 @@ function IrregularBorder(prop) {
     borderLeft: `5px solid ${anotherColor}`,
     borderBottom: `24px solid ${anotherColor}`,
     backgroundColor: `${anotherColor}`,
+    display: backgroundOpacity,
   };
   useEffect(() => {
     if (backgroundPurple && isVisible) {
@@ -50,6 +52,7 @@ function IrregularBorder(prop) {
           background: anotherColor
             ? anotherSectionStyle.backgroundColor
             : sectionStyle.backgroundColor,
+          display: backgroundOpacity,
         }}
       />
     </div>

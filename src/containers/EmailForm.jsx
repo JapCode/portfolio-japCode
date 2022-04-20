@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-scroll';
 import SecondaryButton from '../components//SecondaryButton';
 
 function EmailForm(prop) {

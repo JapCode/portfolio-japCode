@@ -7,11 +7,13 @@ import useMobileMenuState from '../hooks/UseMobileMenuState';
 import UseScrollBlock from '../hooks/UseScrollBlock';
 import socialMedia from '../utils/socialMedia';
 import ContactItem from './ContactItem';
+import useWindowSize from '../hooks/UseWindowSize';
 
 function MenuMobile(prop) {
   // eslint-disable-next-line no-unused-vars
   // const { menuIsVisible } = prop;
   const menuState = useMobileMenuState();
+  const windowSize = useWindowSize();
   const [blockScroll, allowScroll] = UseScrollBlock();
   const menuMobileRef = useRef(null);
   const barsRef = useRef(null);
@@ -140,22 +142,24 @@ function MenuMobile(prop) {
             <ActiveBar />
           </li>
         </ul>
-        <ul
-          className={`menuMobile__socialMedia ${
-            menuState
-              ? 'menuMobile__socialMedia--active'
-              : 'menuMobile__socialMedia--inActive'
-          }`}
-        >
-          {socialMedia.map((social, index) => (
-            <ContactItem
-              key={index}
-              url={social.url}
-              icon={social.icon}
-              name={social.name}
-            />
-          ))}
-        </ul>
+        {windowSize.height > 650 && (
+          <ul
+            className={`menuMobile__socialMedia ${
+              menuState
+                ? 'menuMobile__socialMedia--active'
+                : 'menuMobile__socialMedia--inActive'
+            }`}
+          >
+            {socialMedia.map((social, index) => (
+              <ContactItem
+                key={index}
+                url={social.url}
+                icon={social.icon}
+                name={social.name}
+              />
+            ))}
+          </ul>
+        )}
       </div>
       <div className="menuMobile__effects">
         <MenuEffectAnimation />

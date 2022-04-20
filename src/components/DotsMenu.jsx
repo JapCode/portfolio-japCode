@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import useBackgroundColorState from '../hooks/UseBackgroundColorState';
 import useMobileMenuState from '../hooks/UseMobileMenuState';
+import useWindowSize from '../hooks/UseWindowSize';
 import addRemoveClass from '../utils/addRemoveClass';
 
 function DotsMenu() {
   const menuState = useMobileMenuState();
+  const windowSize = useWindowSize();
   const dotsColor = useBackgroundColorState();
   const dotsMenuRef = useRef(null);
-  const purpleColor = '#5a189a';
-  const whiteColor = '#FFFFFF';
+  const purpleColor = windowSize.height > 650 ? '#5a189a' : '#f20089';
+  const whiteColor = windowSize.height > 650 ? '#FFFFFF' : '#f20089';
   // const [defaultDotsState, setDefaultDotsState] = useState(true);
 
   useEffect(() => {
