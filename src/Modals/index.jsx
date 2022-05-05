@@ -1,14 +1,6 @@
 import { createPortal } from 'react-dom';
-import ContactModal from './ContactModal';
-
-// const container = document.getElementById('app--modal');
-// createPortal(
-//   <ContactModal onClose={onClose}>{children}</ContactModal>,
-//   container,
-// );
-
-import { createPortal } from 'react-dom';
 import { useLayoutEffect, useState } from 'react';
+import createWrapperAndAppendToBody from './CreateWrapperAndAppendToBody';
 
 function ReactPortal({ children, wrapperId = 'react-portal-wrapper' }) {
   const [wrapperElement, setWrapperElement] = useState(null);

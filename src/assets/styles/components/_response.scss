@@ -1,0 +1,60 @@
+@use '../utils/' as utils;
+.response {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // height: 100%;
+  // width: 100%;
+  &__text {
+    text-align: center;
+    font-size: utils.$little-title-size;
+    font-family: utils.$title-font;
+    color: utils.$color-primary;
+    padding: 20px 0;
+  }
+  &__img {
+    margin-left: -40px;
+  }
+  &__btn {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    // padding-bottom: 20px;
+    span {
+      font-size: utils.$text-size;
+      font-family: utils.$base-font-light;
+      color: utils.$color-secondary;
+      padding: 10px 0;
+    }
+  }
+}
+.responseError {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__text {
+    text-align: center;
+    font-size: utils.$title-size;
+    font-family: utils.$title-font;
+    color: utils.$color-primary;
+    padding: 20px;
+  }
+  &__btn {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    // padding-bottom: 20px;
+    span {
+      font-size: utils.$text-size;
+      font-family: utils.$base-font-light;
+      color: utils.$color-secondary;
+      padding: 10px 0;
+    }
+  }
+}

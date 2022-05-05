@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import useMobileMenuState from '../hooks/UseMobileMenuState';
-import useIsMounted from '../hooks/UseMounted';
 import addRemoveClass from '../utils/addRemoveClass';
 import ArrowIcon from './ArrowIcon';
 

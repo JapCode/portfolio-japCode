@@ -26,9 +26,16 @@
       clip-path: polygon(0 0, 90% 0, 100% 5%, 100% 100%, 10% 100%, 0 95%);
     }
     @include utils.respond-to(utils.$breakPoint-tablet) {
+      overflow: hidden;
       width: 570px;
       height: 644px;
       clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
     }
+  }
+  &-skill-content {
+    width: 300px;
+    height: 500px;
+    overflow: scroll;
+    padding: 0;
   }
 }

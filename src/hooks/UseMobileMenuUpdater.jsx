@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { MobileMenuUpdaterContext } from '../context/MobileMenuContext';
 
 function useMobileMenuUpdater() {

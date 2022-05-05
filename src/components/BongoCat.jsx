@@ -1,11 +1,12 @@
-import { useEffect, useRef, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useMemo, useCallback, forwardRef } from 'react';
 
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+// import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 // import waitFor from '../utils/waitFor';
 import bongoCatAnimation from '../utils/bongoCatAnimation';
 import resetBongoCatAnimation from '../utils/resetBongoCatAnimation';
 
-function BongoCat(prop) {
+// function BongoCat(prop)
+const BongoCat = forwardRef((prop, ref) => {
   const { visible } = prop;
   // const offsetY = useParallax();
   // const [containerRef, isVisible] = useIntersectionObserver({
@@ -27,9 +28,6 @@ function BongoCat(prop) {
   const bongoCatInterval = useRef(null);
   const bongoColorBody = '#CCCCCC';
   const bongoColorPaw = '#e6b3dc';
-  const catCallback = useCallback(() => {
-    bongoCatAnimation(config, bongoCatInterval);
-  }, [bongoCatInterval]);
   const config = useMemo(() => {
     return {
       pawLeftUp,
@@ -38,6 +36,9 @@ function BongoCat(prop) {
       pawRightDown,
     };
   }, [pawLeftUp, pawLeftDown, pawRightUp, pawRightDown]);
+  const catCallback = useCallback(() => {
+    bongoCatAnimation(config, bongoCatInterval);
+  }, [bongoCatInterval, config]);
   // const config = {
   //   pawLeftUp: pawLeftUp.current,
   //   pawLeftDown: pawLeftDown.current,
@@ -214,5 +215,5 @@ function BongoCat(prop) {
       </defs>
     </svg>
   );
-}
+});
 export default BongoCat;

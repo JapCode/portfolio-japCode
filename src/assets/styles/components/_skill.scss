@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  min-width: 100px;
+  max-width: 100px;
   height: 122px;
   background-color: utils.$color-primary;
   box-shadow: utils.$skill-cards-shadow;

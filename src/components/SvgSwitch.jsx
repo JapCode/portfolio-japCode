@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import { useEffect, useMemo, useState, useRef } from 'react';
-import useBackgroundColorState from '../hooks/UseBackgroundColorState';
+import { useEffect, useMemo, useRef } from 'react';
+// import useBackgroundColorState from '../hooks/UseBackgroundColorState';
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+// import useViewSectionState from '../hooks/UseViewSectionState';
 import switchTransition from '../utils/switchTransition';
 
-function SvgSwitch({ backgroundPurple }) {
+function SvgSwitch({ backgroundPurple, colorOffset }) {
+  // const [background, setBackground] = useState(backgroundPurple);
+  // const viewSection = useViewSectionState();
   const topSwitchRef = useRef(null);
   const switchInterval = useRef(null);
   const [containerRef, isVisible] = useIntersectionObserver({
@@ -26,7 +29,7 @@ function SvgSwitch({ backgroundPurple }) {
       <>
         <svg
           ref={containerRef}
-          className={`svgSwitch ${backgroundPurple ? 'purple' : ''}`}
+          className={`svgSwitch ${backgroundPurple === 1 ? 'purple' : ''}`}
           xmlns="http://www.w3.org/2000/svg"
           width="373.12mm"
           height="344.6mm"

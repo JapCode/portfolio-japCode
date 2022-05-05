@@ -1,6 +1,6 @@
 import { Background, Parallax } from 'react-parallax';
 import Dice from '../components/Dice';
-import Skills from './Skills.jsx';
+import Skills from './Skills';
 
 function ParallaxSkills() {
   return (

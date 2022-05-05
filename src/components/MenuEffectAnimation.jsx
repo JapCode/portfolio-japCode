@@ -35,6 +35,33 @@ function MenuEffectAnimation() {
     }
   };
 
+  const close = () => {
+    if (itemsRef.current !== null) {
+      for (let i = 0; i < itemsRef.current.children.length; i++) {
+        thirdTimeOut.current = setTimeout(() => {
+          if (itemsRef.current !== null) {
+            itemsRef.current.children[i].classList.add(
+              'menuEffectAnimation__item--inActive',
+            );
+            itemsRef.current.children[i].classList.remove(
+              'menuEffectAnimation__item--active',
+            );
+            itemsRef.current.children[i].classList.remove(
+              'menuEffectAnimation__item--full',
+            );
+          }
+        }, i * 100);
+      }
+    }
+  };
+  const remove = () => {
+    // clearTimeout(removeTimeOut.current);
+    if (itemsRef.current !== null && !menuState) {
+      itemsRef.current.classList.remove('menuEffectAnimation__items--active');
+      // removeTimeOut.current = setTimeout(() => {
+      // }, 1000);
+    }
+  };
   const animationEnd = () => {
     if (itemsRef.current !== null && menuState) {
       for (let i = itemsRef.current.children.length - 1; i >= 0; i--) {
@@ -59,26 +86,6 @@ function MenuEffectAnimation() {
       }, 1000);
     }
   };
-
-  const close = () => {
-    if (itemsRef.current !== null) {
-      for (let i = 0; i < itemsRef.current.children.length; i++) {
-        thirdTimeOut.current = setTimeout(() => {
-          if (itemsRef.current !== null) {
-            itemsRef.current.children[i].classList.add(
-              'menuEffectAnimation__item--inActive',
-            );
-            itemsRef.current.children[i].classList.remove(
-              'menuEffectAnimation__item--active',
-            );
-            itemsRef.current.children[i].classList.remove(
-              'menuEffectAnimation__item--full',
-            );
-          }
-        }, i * 100);
-      }
-    }
-  };
   useEffect(() => {
     if (menuState) {
       animationStart();
@@ -93,31 +100,23 @@ function MenuEffectAnimation() {
     };
   }, [menuState]);
 
-  const remove = () => {
-    // clearTimeout(removeTimeOut.current);
-    if (itemsRef.current !== null && !menuState) {
-      itemsRef.current.classList.remove('menuEffectAnimation__items--active');
-      // removeTimeOut.current = setTimeout(() => {
-      // }, 1000);
-    }
-  };
   return (
     <div className="menuEffectAnimation">
       <div className="menuEffectAnimation__items" ref={itemsRef}>
         <div
           // onTransitionEnd={remove}
           className="menuEffectAnimation__item"
-        ></div>
-        <div className="menuEffectAnimation__item"></div>
-        <div className="menuEffectAnimation__item"></div>
-        <div className="menuEffectAnimation__item"></div>
-        <div className="menuEffectAnimation__item"></div>
-        <div className="menuEffectAnimation__item"></div>
-        <div className="menuEffectAnimation__item"></div>
+        />
+        <div className="menuEffectAnimation__item" />
+        <div className="menuEffectAnimation__item" />
+        <div className="menuEffectAnimation__item" />
+        <div className="menuEffectAnimation__item" />
+        <div className="menuEffectAnimation__item" />
+        <div className="menuEffectAnimation__item" />
         <div
           onTransitionEnd={animationEnd}
           className="menuEffectAnimation__item"
-        ></div>
+        />
       </div>
       <div
         className={`menuEffectAnimation__border  ${

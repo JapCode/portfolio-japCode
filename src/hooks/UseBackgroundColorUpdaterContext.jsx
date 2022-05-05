@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { BackgroundColorUpdaterContext } from '../context/BackgroundContext';
 
 function useBackgroundColorUpdaterContext(BgColor) {
@@ -10,7 +10,7 @@ function useBackgroundColorUpdaterContext(BgColor) {
   }
   const newColor = useEffect(() => {
     setBackgroundColor(BgColor);
-  }, [BgColor]);
+  }, [BgColor, setBackgroundColor]);
   return newColor;
 }
 

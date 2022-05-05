@@ -12,7 +12,7 @@ function ParallaxLandingPurple(prop) {
       bgStyle={{ bottom: '15%' }}
     >
       <Background className="parallaxLandingPurple">
-        <SvgSwitch backgroundPurple={true} />
+        <SvgSwitch backgroundPurple />
       </Background>
       <LandingPurple />
     </Parallax>

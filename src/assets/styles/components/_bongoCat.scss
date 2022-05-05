@@ -25,10 +25,13 @@
   // z-index: 90;
   width: 100vw;
   height: 21vh;
+  margin-top: -10vh;
   @include utils.respond-to(utils.$breakPoint-desktop) {
+    margin-top: 10vh;
     height: 24vh;
   }
   @include utils.respond-to(utils.$breakPoint-large) {
+    margin-top: 0;
     height: 40vh;
   }
 }

@@ -16,7 +16,7 @@ function ActiveBar() {
             strokeWidth="1.134"
             d="M243 7l6.146-5.992L302 1v6zM2 7l5-6h232l-7 6H2.27z"
             paintOrder="stroke markers fill"
-          ></path>
+          />
         </clipPath>
       </defs>
       <path
@@ -28,7 +28,7 @@ function ActiveBar() {
         clipPath="url(#clipPath4408)"
         paintOrder="stroke markers fill"
         transform="translate(-7.29 -78.588) translate(7.08 78.473) scale(.26458)"
-      ></path>
+      />
     </svg>
   );
 }

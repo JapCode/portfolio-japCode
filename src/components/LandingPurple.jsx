@@ -1,15 +1,18 @@
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+// import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 
 import useWindowSize from '../hooks/UseWindowSize';
 
 function LandingPurple() {
   const windowSize = useWindowSize();
-  const [containRef, isVisible] = useIntersectionObserver({
-    rootMargin: '0px',
-    threshold: 0.6,
-  });
+  // const [containRef, isVisible] = useIntersectionObserver({
+  //   rootMargin: '0px',
+  //   threshold: 0.6,
+  // });
   return (
-    <div ref={containRef} className="landingPurple">
+    <div
+      //  ref={containRef}
+      className="landingPurple"
+    >
       <div
         className={`landingPurple__container
         `}

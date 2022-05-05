@@ -1,6 +1,10 @@
-function MoreBtn() {
+function MoreBtn(prop) {
+  const { isOpen } = prop;
   return (
     <svg
+      className={`project__btnSeeMore ${
+        isOpen ? 'project__btnSeeMore--active' : ''
+      }`}
       width="16"
       height="16"
       viewBox="0 0 16 16"

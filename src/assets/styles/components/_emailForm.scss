@@ -12,22 +12,26 @@
   &__title {
     font-family: utils.$title-font;
     color: utils.$color-primary;
+    width: 100%;
+    text-align: center;
+    font-size: utils.$little-title-size;
   }
   label {
     color: utils.$color-primary;
-    font-family: utils.$base-font-light;
+    font-family: utils.$base-font-regular;
     width: 100%;
     font-size: 1.6rem;
     // font-weight: bold;
   }
   input {
-    font-family: utils.$base-font-regular;
     all: unset;
+    font-family: utils.$base-font-regular;
     font-size: 1.4rem;
     padding-top: 10px;
     width: 100%;
     height: 30px;
-    border-bottom: 2px solid utils.$color-gray;
+    // border-bottom: 2px solid utils.$color-gray;
+    border-bottom: 2px solid utils.$color-secondGray;
     caret-color: utils.$color-secondary;
     box-sizing: border-box;
     color: utils.$color-gray;
@@ -45,7 +49,7 @@
     caret-color: utils.$color-secondary;
     font-size: 1.4rem;
     width: 100%;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid utils.$color-secondGray;
     // background-color: utils.$color-clean-gray;
     // word-wrap: normal;
     // word-break: initial;
@@ -67,5 +71,9 @@
     // width: 360px;
     // height: 100px;
     // overflow: visible;
+  }
+  &__error {
+    margin-top: -10px;
+    color: #ff4d6d;
   }
 }

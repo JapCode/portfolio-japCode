@@ -1,143 +1,255 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import SvgArrow from '../components/SvgArrow';
-// import Parallax from '../containers/Parallax';
-import ParallaxLanding from '../containers/ParallaxLanding';
+/* eslint-disable no-param-reassign */
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import BongoCat from '../components/BongoCat';
+import CPBackgroundContact from '../components/CPBackgroundContact';
+import CPBackgroundPortfolio from '../components/CPBackgroundPortfolio';
+import CPBackgroundPortfolioFull from '../components/CPBackgroundPortfolioFull';
+import Dice from '../components/Dice';
 import IrregularBorder from '../components/IrregularBorder';
-import ParallaxLandingPurple from '../containers/ParallaxLandingPurple';
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
-import ParallaxAbout from '../containers/ParallaxAbout';
-import ParallaxSkills from '../containers/ParallaxSkills';
-import ParallaxPortfolio from '../containers/ParallaxPortfolio';
-import ParallaxContact from '../containers/ParallaxContact';
-import { animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
-import useWindowSize from '../hooks/UseWindowSize';
-import ArrowToTopIcon from '../components/ArrowToTopIcon';
-import { Meta, Title } from 'react-head';
-import Landing from '../containers/Landing';
 import LandingPurple from '../components/LandingPurple';
+import MetaElements from '../components/Meta';
+import SvgSwitch from '../components/SvgSwitch';
+import About from '../containers/About';
+import Contact from '../containers/Contact';
+import Landing from '../containers/Landing';
+import Projects from '../containers/Projects';
+import Skills from '../containers/Skills';
+import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+import useNavigationMenuState from '../hooks/UseNavigationMenuState';
+import useViewSectionUpdater from '../hooks/UseViewSectionUpdater';
+import useWindowSize from '../hooks/UseWindowSize';
 
-const options = {
-  rootMargin: '0px',
-  threshold: 0.7,
-};
-const nextElement = (element, elementVisible) => {
-  if (elementVisible) {
-    scroller.scrollTo(element, {
-      duration: 300,
-      smooth: true,
-    });
-  }
-};
-const Home = React.memo(function Home() {
-  const [landingRef, landingIsVisible] = useIntersectionObserver(options);
-  const [landingPurpleRef, landingPurpleIsVisible] =
-    useIntersectionObserver(options);
-  const [aboutRef, aboutIsVisible] = useIntersectionObserver(options);
-  const [skillsRef, skillsIsVisible] = useIntersectionObserver(options);
-  const [portfolioRef, portfolioIsVisible] = useIntersectionObserver(options);
-  const [contactMeRef, contactMeIsVisible] = useIntersectionObserver(options);
+function Home() {
+  // const [active, setActive] = useState(true);
   const windowSize = useWindowSize();
-  const scrollTimeout = useRef(null);
-  const scrollTime = windowSize.width > 600 ? 400 : 0;
-  const verifyHeight = windowSize.height < 650 ? 'none' : 'block';
-  const [visibleState, setVisibleState] = useState('Home');
-  const allSections = [
-    {
-      name: 'Home',
-      ref: landingRef,
-      state: landingIsVisible,
-    },
-    {
-      name: 'Home',
-      ref: landingPurpleRef,
-      state: landingPurpleIsVisible,
-    },
-    {
-      name: 'About',
-      ref: aboutRef,
-      state: aboutIsVisible,
-    },
-    {
-      name: 'Skills',
-      ref: skillsRef,
-      state: skillsIsVisible,
-    },
-    {
-      name: 'Portfolio',
-      ref: portfolioRef,
-      state: portfolioIsVisible,
-    },
-    {
-      name: 'Contact',
-      ref: contactMeRef,
-      state: contactMeIsVisible,
-    },
-  ];
+  const parallaxRef = useRef(null);
+  const parallaxLayerRef = useRef(null);
+  const svgRef = useRef(null);
+  const [viewLayer, setViewLayer] = useState(0);
+  useViewSectionUpdater(viewLayer);
+  const navigationState = useNavigationMenuState();
+  const [mobile, setMobile] = useState(false);
+  // const [skillActive, setSkillActive] = useState(false);
+  const [contactFactor, setContactFactor] = useState(1);
+  let offsetTry;
+  const [containRef, isVisible] = useIntersectionObserver({
+    rootMargin: '0px',
+    threshold: 0.8,
+  });
+  // let offsetParallax;
+  const [numberPage, setNumberPage] = useState(6);
 
+  // const skillsFactor = 1;
+  // let contactFactor = 1;
+  // const portfolioOffset = 4;
+  // const contactOffset = 5;
+  // let numberPage = 6;
   useEffect(() => {
-    clearTimeout(scrollTimeout.current);
-    scrollSpy.update();
-    if (window.document.body.style.length === 0) {
-      scrollTimeout.current = setTimeout(() => {
-        allSections.forEach((section) => {
-          if (section.ref.current !== null && section.state) {
-            nextElement(section.ref.current.id, section.state);
-            setVisibleState(section.name);
-          }
-        });
-      }, scrollTime);
+    if (windowSize.height < 600) {
+      setNumberPage(6.1);
+      // numberPage = 6.2;
+      // contactFactor = 1.1;
+      // numberPage = 6.2;
+      setMobile(false);
+      setContactFactor(1.1);
+    } else {
+      setNumberPage(6);
+      setContactFactor(1);
+      // contactFactor = 1.2;
+      setMobile(true);
     }
-  }, [landingIsVisible, landingPurpleIsVisible, aboutIsVisible, skillsIsVisible, portfolioIsVisible, contactMeIsVisible]);
+  }, [windowSize]);
 
-  const nextSectionButton = () => {
-    for (let i = 0; i < allSections.length; i++) {
-      if (allSections[i].state) {
-        nextElement(allSections[i + 1].ref.current.id, allSections[i].state);
+  const handleClick = () => {
+    parallaxRef.current.scrollTo(5);
+  };
+  const calc = (space, res) => {
+    if (res) {
+      return Math.floor(parallaxRef.current.current / (space - 100));
+    }
+    return Math.floor(parallaxRef.current.current / (space / 2));
+  };
+  const svgChange = () => {
+    if (svgRef.current !== null) {
+      if (offsetTry === 0) {
+        svgRef.current.children[0].classList.remove('purple');
+      } else if (offsetTry === 1) {
+        svgRef.current.children[0].classList.add('purple');
       }
     }
   };
-  const toTop = () => {
-    scroll.scrollToTop(0, {
-      duration: 500,
-      smooth: true,
-    });
+  const handleScroll = () => {
+    if (parallaxRef.current !== null) {
+      // console.log(
+      //   Math.floor(
+      //     parallaxRef.current.current / (parallaxRef.current.space - 100),
+      //   ),
+      // );
+      offsetTry = calc(parallaxRef.current.space, false);
+      svgChange();
+      // setOffsetParallax(calc(parallaxRef.current.space, false));
+      // offsetParallax = Math.floor(
+      //   parallaxRef.current.current / (parallaxRef.current.space / 2),
+      // );
+      // console.log(offsetParallax);
+      switch (
+        Math.floor(
+          parallaxRef.current.current / (parallaxRef.current.space - 100),
+        )
+      ) {
+        case 0:
+          setViewLayer((prev) => (prev = 0));
+          break;
+        // case 1:
+        //   setViewLayer((prev) => (prev = 0));
+        //   break;
+        case 2:
+          setViewLayer((prev) => (prev = 2));
+          break;
+        case 3:
+          setViewLayer((prev) => (prev = 3));
+          break;
+        case 4:
+          setViewLayer((prev) => (prev = 4));
+          break;
+        case 5:
+          setViewLayer((prev) => (prev = 5));
+          break;
+        default:
+          setViewLayer((prev) => (prev = 0));
+      }
+    }
   };
-  return (
-    <>
-      <Title>{`${visibleState} | JapCode`}</Title>
-      <div id="landing" name="element-1">
-        <section id="landingWhite" ref={landingRef}>
-          <ParallaxLanding windowSize={windowSize} />
-        </section>
-        <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
-        <section id="landingPurple" ref={landingPurpleRef}>
-          <ParallaxLandingPurple windowSize={windowSize} />
-        </section>
-      </div>
+  const scrollTo = (element, layer) => {
+    element.scrollTo(layer);
+  };
+  useEffect(() => {
+    if (navigationState !== null) {
+      scrollTo(parallaxRef.current, navigationState);
+    }
+  }, [navigationState]);
 
-      <IrregularBorder backgroundOpacity={verifyHeight} />
-      <section id="about" ref={aboutRef}>
-        <ParallaxAbout />
-      </section>
-      <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
-      <section id="skills" ref={skillsRef}>
-        <ParallaxSkills />
-      </section>
-      <IrregularBorder backgroundOpacity={verifyHeight} />
-      <section id="portfolio" ref={portfolioRef}>
-        <ParallaxPortfolio />
-      </section>
-      <IrregularBorder backgroundPurple backgroundOpacity={verifyHeight} />
-      <section id="contact" ref={contactMeRef}>
-        <ParallaxContact />
-      </section>
-      <IrregularBorder backgroundOpacity={verifyHeight} />
-      {contactMeIsVisible ? (
-        <ArrowToTopIcon clickAction={toTop} />
-      ) : (
-        <SvgArrow clickAction={nextSectionButton} />
-      )}
-    </>
-  );
-});
+  useEffect(() => {
+    if (parallaxRef.current !== null) {
+      parallaxRef.current.container.current.onscroll = handleScroll;
+    }
+    return () => {
+      parallaxRef.current.container.current.onscroll = null;
+    };
+  }, []);
+  // useEffect(() => {
+  //   if (svgRef.current !== null) {
+  //     console.log(svgRef.current);
+  //   }
+  // }, [offsetTry]);
+
+  return useMemo(() => {
+    return (
+      <>
+        <MetaElements />
+        <section>
+          <Parallax
+            pages={numberPage}
+            style={{ top: '0', left: '0' }}
+            ref={parallaxRef}
+          >
+            {/* landing */}
+            <ParallaxLayer offset={0} factor={1}>
+              <IrregularBorder />
+            </ParallaxLayer>
+            <ParallaxLayer offset={0.25} speed={-1}>
+              <section className="parallaxLanding" ref={svgRef}>
+                <SvgSwitch
+                // colorOffset={offsetParallax}
+                />
+              </section>
+            </ParallaxLayer>
+            <ParallaxLayer offset={0} speed={1}>
+              <Landing />
+            </ParallaxLayer>
+            {/* landingPurple */}
+            <ParallaxLayer
+              offset={1}
+              factor={1}
+              className="second"
+              style={{ backgroundColor: '#5a189a', zIndex: '-1' }}
+            >
+              {mobile && <IrregularBorder backgroundPurple />}
+            </ParallaxLayer>
+            <ParallaxLayer offset={1} speed={1}>
+              <LandingPurple />
+            </ParallaxLayer>
+            {/* about */}
+            <ParallaxLayer
+              offset={2}
+              ref={parallaxLayerRef}
+              style={{ backgroundColor: '#fff' }}
+            >
+              {mobile && <IrregularBorder />}
+            </ParallaxLayer>
+            <ParallaxLayer className="parallaxAbout" offset={2} speed={1}>
+              <div ref={containRef}>
+                <BongoCat visible={isVisible} />
+              </div>
+            </ParallaxLayer>
+            <ParallaxLayer offset={2} speed={0.5}>
+              <About />
+            </ParallaxLayer>
+            {/* skills */}
+            <ParallaxLayer
+              offset={3}
+              factor={1}
+              style={{ backgroundColor: '#5a189a' }}
+            >
+              {mobile && <IrregularBorder backgroundPurple />}
+            </ParallaxLayer>
+            <ParallaxLayer className="parallaxSkills" offset={3} speed={1}>
+              <Dice />
+            </ParallaxLayer>
+            <ParallaxLayer offset={3.1} speed={0.5}>
+              <Skills />
+            </ParallaxLayer>
+            {/* portfolio */}
+            <ParallaxLayer
+              offset={4}
+              factor={1}
+              style={{ backgroundColor: '#fff' }}
+            >
+              {mobile && <IrregularBorder />}
+            </ParallaxLayer>
+            <ParallaxLayer className="parallaxPortfolio" offset={4} speed={0.5}>
+              {windowSize.width > 600 ? (
+                <CPBackgroundPortfolioFull />
+              ) : (
+                <CPBackgroundPortfolio />
+              )}
+            </ParallaxLayer>
+            <ParallaxLayer offset={4} speed={1}>
+              <Projects />
+            </ParallaxLayer>
+            {/* contact */}
+            <ParallaxLayer
+              offset={5}
+              factor={contactFactor}
+              style={{ backgroundColor: '#5a189a' }}
+            >
+              {mobile && <IrregularBorder backgroundPurple />}
+            </ParallaxLayer>
+            <ParallaxLayer className="parallaxContact" offset={5} speed={0.3}>
+              <CPBackgroundContact />
+            </ParallaxLayer>
+            <ParallaxLayer offset={5} speed={1}>
+              <Contact actionClick={handleClick} />
+            </ParallaxLayer>
+            <ParallaxLayer offset={numberPage}>
+              {windowSize.height < 700 ? '' : <IrregularBorder />}
+            </ParallaxLayer>
+          </Parallax>
+        </section>
+      </>
+    );
+  }, [windowSize, mobile, contactFactor, isVisible, numberPage]);
+}
+
 export default Home;

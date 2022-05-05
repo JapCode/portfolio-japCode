@@ -1,10 +1,11 @@
 @use '../utils/' as utils;
 .contact {
   @extend %section-content;
-  padding-top: 87px;
+  padding-top: 0;
   align-items: start;
   height: 110vh;
   @include utils.respondHeight-to(650px) {
+    padding-top: 10vh;
     height: 100vh;
   }
   @include utils.respond-to(utils.$breakPoint-tablet) {

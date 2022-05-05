@@ -1,7 +1,6 @@
 import { Parallax, Background } from 'react-parallax';
 import Landing from './Landing';
 import SvgSwitch from '../components/SvgSwitch';
-import { useEffect, useState } from 'react';
 import useWindowSize from '../hooks/UseWindowSize';
 
 function ParallaxLanding() {

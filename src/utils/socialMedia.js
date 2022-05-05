@@ -1,6 +1,7 @@
 import gitHubLogo from '../assets/static/github.svg';
 import twitterLogo from '../assets/static/twitter.svg';
 import linkedinLogo from '../assets/static/linkedin.svg';
+
 const socialMedia = [
   {
     name: 'github',

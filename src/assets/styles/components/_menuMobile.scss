@@ -41,7 +41,7 @@
     -webkit-animation: slide-in-right 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
       both;
     animation-delay: 4s;
-    a {
+    .item--text {
       display: flex;
       padding-left: 60px;
       justify-content: start;
@@ -55,17 +55,12 @@
         padding-left: 20vw;
       }
     }
-    // &--active {
-    //   border-bottom: 2px solid red;
-    //   background-image: linear-gradient(
-    //     to left bottom,
-    //     #5a189a,
-    //     #89079b,
-    //     #b00097,
-    //     #d30091,
-    //     #f20089
-    //   );
-    // }
+    &--active {
+      opacity: 1;
+    }
+    &--close {
+      opacity: 0;
+    }
   }
   &__socialMedia {
     position: absolute;
@@ -102,7 +97,9 @@
     // animation: opacity-in 5s ease-in-out forwards;
   }
 }
-
+// .item--activeBar {
+//   opacity: 0;
+// }
 @for $i from 1 through 5 {
   .menuMobile__item:nth-child(#{$i}n) {
     animation-delay: #{$i * 0.35}s;

@@ -1,12 +1,13 @@
 function SecondaryButton(props) {
   // eslint-disable-next-line react/prop-types
   const { children, btnAction, btnType, secondaryStyle } = props;
+  // const type = btnType || 'button';
   return (
     <button
       className={`btnSecondary ${
         secondaryStyle ? 'btnSecondary--first' : 'btnSecondary--secondary'
       } `}
-      type={btnType || 'button'}
+      type={btnType ? 'submit' : 'button'}
       onClick={btnAction}
     >
       <div className="btnSecondary--pulse" />

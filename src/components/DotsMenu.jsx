@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import useBackgroundColorState from '../hooks/UseBackgroundColorState';
 import useMobileMenuState from '../hooks/UseMobileMenuState';
 import useWindowSize from '../hooks/UseWindowSize';

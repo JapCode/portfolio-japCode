@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
-import useBackgroundColorState from '../hooks/UseBackgroundColorState';
+// import useBackgroundColorState from '../hooks/UseBackgroundColorState';
 
 function SvgArrow(prop) {
-  const arrowColor = useBackgroundColorState();
+  // const arrowColor = useBackgroundColorState();
+  const arrowColor = '#f20089';
   const { clickAction } = prop;
   // const [arrowColor, setArrowColor] = useState(BGcolor);
   return useMemo(() => {

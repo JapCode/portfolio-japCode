@@ -1,6 +1,7 @@
 function switchTransition(element, intervalRef, time) {
+  const interval = intervalRef;
   if (element.current !== null) {
-    intervalRef.current = setInterval(() => {
+    interval.current = setInterval(() => {
       for (let i = 0; i < element.current.children.length; i += 1) {
         if (
           element.current.children[i].classList.contains(

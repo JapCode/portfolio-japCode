@@ -1,41 +1,61 @@
-import projectImg from '../assets/static/projectExample.jpg';
-import MoreBtn from '../components/MoreBtn';
+/* eslint-disable camelcase */
+import { useEffect, useState } from 'react';
 import PrincipalButton from '../components/PrincipalButton';
-import imgExample from '../assets/static/projectExample.jpg';
 
-function CardsProjectsDesk() {
+function CardsProjectsDesk(prop) {
+  const {
+    name,
+    description,
+    html_url,
+    homepage,
+    language,
+    imgUrlDesk,
+    imgUrlMobile,
+  } = prop;
+  const [projects, setProjects] = useState(false);
+  useEffect(() => {
+    if (language) {
+      setProjects(name);
+    }
+  }, [language, name]);
   return (
-    <div className="projectDesk">
-      <div className="projectDesk__details">
-        <h3 className="projectDesk__title">Title</h3>
-        <ul className="projectDesk__technologies">
-          <li>React</li>
-          <li>Sass</li>
-          <li>Node</li>
-        </ul>
-        <p className="projectDesk__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit.
-        </p>
-        <span className="projectDesk__buttons">
-          <PrincipalButton>Web</PrincipalButton>
-          <PrincipalButton>Github</PrincipalButton>
-        </span>
-      </div>
-      <figure className="projectDesk__imgContainer">
-        <img
-          className="projectDesk__imgContainer--imgDesk"
-          src={imgExample}
-          alt=""
-        />
-        <img
-          className="projectDesk__imgContainer--imgMobile"
-          src={imgExample}
-          alt=""
-        />
-      </figure>
-    </div>
+    <>
+      {projects ? (
+        <div className="projectDesk">
+          <div className="projectDesk__details">
+            <h3 className="projectDesk__title">{name}</h3>
+            <ul className="projectDesk__technologies">
+              {language.map((item) => {
+                return <li key={name + item.name.toString()}>{item.name}</li>;
+              })}
+            </ul>
+            <p className="projectDesk__description">{description}</p>
+            <span className="projectDesk__buttons">
+              <a href={homepage} target="_blank" rel="noopener noreferrer">
+                <PrincipalButton>Web</PrincipalButton>
+              </a>
+              <a href={html_url} target="_blank" rel="noopener noreferrer">
+                <PrincipalButton>Github</PrincipalButton>
+              </a>
+            </span>
+          </div>
+          <figure className="projectDesk__imgContainer">
+            <img
+              className="projectDesk__imgContainer--imgDesk"
+              src={imgUrlDesk}
+              alt="for project desktop size"
+            />
+            <img
+              className="projectDesk__imgContainer--imgMobile"
+              src={imgUrlMobile}
+              alt="for project mobile size"
+            />
+          </figure>
+        </div>
+      ) : (
+        ''
+      )}
+    </>
   );
 }
 export default CardsProjectsDesk;

@@ -2,6 +2,7 @@
 
 .svgSwitch {
   $self: &;
+
   // transform: translateY(50vh);
   width: 419px;
   height: 260px;
@@ -9,9 +10,16 @@
     height: 387px;
   }
   // transition: all 3s ease-in-out;
+  &__front {
+  }
   &__back,
   &__top,
   &__front {
+    transition: all 1s linear;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -ms-transition: all 1s linear;
+    -o-transition: all 1s linear;
     fill: utils.$color-clean;
     &--stroke {
       fill: utils.$color-clean-gray;

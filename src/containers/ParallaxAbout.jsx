@@ -2,8 +2,6 @@ import { Background, Parallax } from 'react-parallax';
 import About from './About';
 import BongoCat from '../components/BongoCat';
 import useIntersectionObserver from '../hooks/UseIntersectionObserver';
-import { useEffect, useState } from 'react';
-import useWindowSize from '../hooks/UseWindowSize';
 
 function ParallaxAbout() {
   const [containRef, isVisible] = useIntersectionObserver({

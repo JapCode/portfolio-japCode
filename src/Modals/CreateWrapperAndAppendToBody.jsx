@@ -4,3 +4,4 @@ function createWrapperAndAppendToBody(wrapperId) {
   document.body.appendChild(wrapperElement);
   return wrapperElement;
 }
+export default createWrapperAndAppendToBody;

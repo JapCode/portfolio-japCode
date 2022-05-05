@@ -3,6 +3,7 @@ import { createContext, useState, useMemo } from 'react';
 const MobileMenuStateContext = createContext();
 const MobileMenuUpdaterContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 function MobileMenuProvider({ children }) {
   const [menuState, setMenuState] = useState(false);
   return (

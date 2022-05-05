@@ -18,6 +18,7 @@ export default () => {
     const bodyPaddingRight =
       parseInt(
         window.getComputedStyle(body).getPropertyValue('padding-right'),
+        10,
       ) || 0;
 
     /**

@@ -16,13 +16,14 @@
   &__item {
     font-size: utils.$little-title-size;
     list-style: none;
+    cursor: pointer;
     a {
       // height: 20px;
-      padding-bottom: 5px;
+      // padding-bottom: 5px;
     }
     &--active {
       border-bottom: 3px solid utils.$color-secondary;
-      transform: skew(60deg);
+      // transform: skew(60deg);
     }
   }
 }

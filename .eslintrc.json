@@ -21,8 +21,9 @@
     "plugins": ["react", "react-hooks", "import", "prettier"],
     "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-no-useless-fragment": "off",
     "react/jsx-uses-react": "off",
-    "react/jsx-boolean-value": "always",
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

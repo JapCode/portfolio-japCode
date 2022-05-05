@@ -1,25 +1,28 @@
 import { useState } from 'react';
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+// import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 import PrincipalButton from '../components/PrincipalButton';
 import TitleDecorator from '../components/TitleDecoration';
 
 function About(prop) {
-  const { visible } = prop;
+  // const { visible } = prop;
   const [isOpen, setIsOpen] = useState(false);
-  const [containRef, isVisible] = useIntersectionObserver({
-    rootMargin: '0px',
-    threshold: 0.7,
-  });
+  // const [containRef, isVisible] = useIntersectionObserver({
+  //   rootMargin: '0px',
+  //   threshold: 0.7,
+  // });
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div ref={containRef} className="about">
+    <div
+      // ref={containRef}
+      className="about"
+    >
       <div
-        className={`about__container ${
-          isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'
-        }`}
+        className={`about__container
+        `}
       >
+        {/* ${isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'} */}
         <span className="title--container">
           <TitleDecorator />
           <h1 className="about__title">Sobre mi</h1>

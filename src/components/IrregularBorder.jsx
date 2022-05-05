@@ -39,7 +39,7 @@ function IrregularBorder(prop) {
     }
   }, [isVisible, backgroundPurple, colorOne, colorTwo]);
   return (
-    <div style={{ height: 0 }}>
+    <div className="sectionBackground__container" style={{ height: 0 }}>
       <div
         ref={containRef}
         className="cyberpunk"

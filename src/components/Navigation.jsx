@@ -1,83 +1,45 @@
-import { Link } from 'react-scroll';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useState } from 'react';
+
 import useBackgroundColorState from '../hooks/UseBackgroundColorState';
-import ActiveBar from './ActiveBar';
+import useNavigationMenuUpdater from '../hooks/UseNavigationMenuUpdater';
+import useViewSectionState from '../hooks/UseViewSectionState';
+import layers from '../utils/navElements';
+import buttonActionMenu from '../utils/buttonActionMenu';
+
 function Navigation() {
   const backgroundColor = useBackgroundColorState();
   const whiteColor = '#FFFFFF';
+  const [toLayer, setToLayer] = useState(0);
+  const viewSection = useViewSectionState();
+  useNavigationMenuUpdater(toLayer);
+
+  const handleClick = (e) => {
+    buttonActionMenu(e, layers, viewSection, setToLayer);
+  };
+  // useEffect(() => {
+  //   setCurrentView(viewSection);
+  // }, [viewSection]);
+
   return (
     <ul
       className={`navMenu ${
         backgroundColor === whiteColor ? 'navMenu--gray' : 'navMenu--white'
       }`}
     >
-      <li className="navMenu__item">
-        <Link
-          // onSetActive={elementActive}
-          // onSetInactive={elementActive}
-          activeClass="navMenu__item--active"
-          to="landing"
-          smooth
-          spy={true}
-          // hashSpy
-          duration={500}
+      {layers.map((layer, index) => (
+        <li
+          key={layer.name.toString()}
+          name={layer.name}
+          onClick={handleClick}
+          className={`navMenu__item ${
+            viewSection === layer.layer ? 'navMenu__item--active' : ''
+          }`}
         >
-          Home
-        </Link>
-      </li>
-      <li className="navMenu__item">
-        <Link
-          // onSetInActive={elementActive}
-          // onSetActive={elementActive}
-          activeClass="navMenu__item--active"
-          to="about"
-          smooth
-          spy={true}
-          // hashSpy={true}
-          // duration={500}
-        >
-          About
-        </Link>
-      </li>
-      <li className="navMenu__item">
-        <Link
-          // onSetActive={elementActive}
-          activeClass="navMenu__item--active"
-          to="skills"
-          smooth
-          spy={true}
-          // hashSpy={true}
-          // duration={500}
-          isDynamic
-        >
-          Skills
-        </Link>
-      </li>
-      <li className="navMenu__item">
-        <Link
-          // onSetActive={elementActive}
-          activeClass="navMenu__item--active"
-          to="portfolio"
-          smooth
-          spy={true}
-          // hashSpy={true}
-          // duration={500}
-        >
-          Portfolio
-        </Link>
-      </li>
-      <li className="navMenu__item">
-        <Link
-          // onSetActive={elementActive}
-          activeClass="navMenu__item--active"
-          to="contact"
-          smooth
-          spy={true}
-          // hashSpy
-          // duration={500}
-        >
-          Contact
-        </Link>
-      </li>
+          {layer.name}
+        </li>
+      ))}
     </ul>
   );
 }

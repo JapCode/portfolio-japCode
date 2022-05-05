@@ -1,43 +1,55 @@
-import { useEffect, useState } from 'react';
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
+import { useState } from 'react';
+// require('dotenv').config();
+import axios from 'axios';
 import ContactModal from '../Modals/ContactModal';
 import EmailForm from './EmailForm';
 import PrincipalButton from '../components/PrincipalButton';
 import TitleDecorator from '../components/TitleDecoration';
 import socialMedia from '../utils/socialMedia';
 import ContactItem from '../components/ContactItem';
-import UseScrollBlock from '../hooks/UseScrollBlock';
-import { scroller } from 'react-scroll';
+import ResponseContainer from './ResponseContainer';
 
-function Contact() {
-  const [containRef, isVisible] = useIntersectionObserver({
-    rootMargin: '0px',
-    threshold: 0.5,
-  });
+const { BASEURL } = process.env;
+
+function Contact(prop) {
+  const { actionClick } = prop;
+  const [response, setResponse] = useState(false);
+  // const [containRef, isVisible] = useIntersectionObserver({
+  //   rootMargin: '0px',
+  //   threshold: 0.5,
+  // });
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => {
     setIsOpen(false);
-    scroller.scrollTo('contact', {
-      duration: 0,
-      smooth: true,
-    });
+    actionClick();
+    setResponse(false);
   };
-  const onOpen = () => setIsOpen(true);
-  const [blockScroll, allowScroll] = UseScrollBlock();
-  useEffect(() => {
-    if (isOpen) {
-      blockScroll();
-    } else {
-      allowScroll();
-    }
-  }, [isOpen]);
+  const onOpen = () => {
+    actionClick();
+    setIsOpen(true);
+  };
+  // const [blockScroll, allowScroll] = UseScrollBlock();
+  const sendEmail = (name, email, message) => {
+    axios
+      .post(`${BASEURL}sendEmail/`, {
+        name,
+        email,
+        message,
+      })
+      .then((res) => {
+        setResponse(res.status);
+      })
+      .catch((err) => {
+        setResponse(err.status);
+      });
+  };
   return (
-    <div className="contact" ref={containRef}>
-      <div
-        className={`about__container ${
-          isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'
-        }`}
-      >
+    <div
+      className="contact"
+      // ref={containRef}
+    >
+      <div className={`about__container `}>
+        {/* ${isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'} */}
         <span className="title--container">
           <TitleDecorator />
           <h1 className="contact__title">Contacto</h1>
@@ -50,7 +62,7 @@ function Contact() {
         <ul className="contact__socialMedia">
           {socialMedia.map((social, index) => (
             <ContactItem
-              key={index}
+              key={social.name.toString()}
               url={social.url}
               icon={social.icon}
               name={social.name}
@@ -65,7 +77,11 @@ function Contact() {
         <PrincipalButton btnAction={onOpen}>Mensaje</PrincipalButton>
       </div>
       <ContactModal onClose={onClose} isOpen={isOpen}>
-        <EmailForm onClose={onClose} />
+        {response ? (
+          <ResponseContainer response={response} onClose={onClose} />
+        ) : (
+          <EmailForm sendEmail={sendEmail} onClose={onClose} />
+        )}
       </ContactModal>
     </div>
   );

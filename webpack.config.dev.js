@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DotenvWebpackPlugin = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
@@ -83,6 +83,10 @@ module.exports = {
       filename: 'assets/styles/[name].css',
     }),
     new BundleAnalyzerPlugin(),
-    new DotenvWebpackPlugin(),
+    new Dotenv({
+      path: './.env',
+      systemvars: true,
+      safe: true,
+    }),
   ],
 };

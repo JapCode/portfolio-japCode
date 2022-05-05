@@ -1,57 +1,40 @@
-import { Link, scrollSpy } from 'react-scroll';
-import React, { useEffect, useRef, useState, useId } from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useEffect, useRef, useState } from 'react';
 import MenuEffectAnimation from './MenuEffectAnimation';
-import IrregularBorder from './IrregularBorder';
 import ActiveBar from './ActiveBar';
 import useMobileMenuState from '../hooks/UseMobileMenuState';
-import UseScrollBlock from '../hooks/UseScrollBlock';
 import socialMedia from '../utils/socialMedia';
 import ContactItem from './ContactItem';
 import useWindowSize from '../hooks/UseWindowSize';
+import layers from '../utils/navElements';
+import buttonActionMenu from '../utils/buttonActionMenu';
+import useNavigationMenuUpdater from '../hooks/UseNavigationMenuUpdater';
+import useViewSectionState from '../hooks/UseViewSectionState';
 
 function MenuMobile(prop) {
   // eslint-disable-next-line no-unused-vars
   // const { menuIsVisible } = prop;
   const menuState = useMobileMenuState();
   const windowSize = useWindowSize();
-  const [blockScroll, allowScroll] = UseScrollBlock();
   const menuMobileRef = useRef(null);
   const barsRef = useRef(null);
+  const viewSection = useViewSectionState();
+  const [toLayer, setToLayer] = useState(0);
+  useNavigationMenuUpdater(toLayer);
 
-  const elementActive = () => {
-    setTimeout(() => {
-      if (barsRef.current !== null && menuState) {
-        for (let i = 0; i < barsRef.current.children.length; i++) {
-          if (
-            barsRef.current.children[i].children[0].classList.contains(
-              'menuMobile__item--active',
-            )
-          ) {
-            barsRef.current.children[i].children[1].style.opacity = 1;
-          } else {
-            barsRef.current.children[i].children[1].style.opacity = 0;
-          }
-        }
-      }
-    }, 100);
+  const handleClick = (e) => {
+    buttonActionMenu(e, layers, viewSection, setToLayer);
   };
-  // useEffect(() => {
-  //   scrollSpy.update();
-  // }, []);
   useEffect(() => {
-    // scrollSpy.update();
-    elementActive();
     if (menuMobileRef.current !== null) {
-      // scrollSpy.update();
       if (menuState) {
-        blockScroll();
         menuMobileRef.current.classList.remove('menuMobile--inActive');
         setTimeout(() => {
           menuMobileRef.current.classList.add('menuMobile--active');
           menuMobileRef.current.classList.remove('menuMobile--inActive');
         }, 200);
       } else {
-        allowScroll();
         menuMobileRef.current.classList.remove('menuMobile--active');
         menuMobileRef.current.classList.add('menuMobile--inActive');
       }
@@ -59,88 +42,31 @@ function MenuMobile(prop) {
   }, [menuState]);
   return (
     <>
-      <div
-        ref={menuMobileRef}
-        className={`menuMobile `}
-        data-spy="scroll"
-        data-target="#myScrollspy"
-      >
+      <div ref={menuMobileRef} className={`menuMobile `}>
         <ul className="menuMobile__items" ref={barsRef}>
-          <li className="menuMobile__item">
-            <Link
-              onSetActive={elementActive}
-              onSetInactive={elementActive}
-              activeClass="menuMobile__item--active"
-              to="landing"
-              // smooth
-              spy={true}
-              // hashSpy
-              duration={500}
-            >
-              Home
-            </Link>
-            <span>
-              <ActiveBar />
-            </span>
-          </li>
-          <li className="menuMobile__item">
-            <Link
-              // onSetInActive={elementActive}
-              onSetActive={elementActive}
-              activeClass="menuMobile__item--active"
-              to="about"
-              // smooth
-              spy={true}
-              // hashSpy={true}
-              // duration={500}
-            >
-              About
-            </Link>
-            <ActiveBar />
-          </li>
-          <li className="menuMobile__item">
-            <Link
-              onSetActive={elementActive}
-              activeClass="menuMobile__item--active"
-              to="skills"
-              // smooth
-              spy={true}
-              // hashSpy={true}
-              // duration={500}
-              isDynamic
-            >
-              Skills
-            </Link>
-            <ActiveBar />
-          </li>
-          <li className="menuMobile__item">
-            <Link
-              onSetActive={elementActive}
-              activeClass="menuMobile__item--active"
-              to="portfolio"
-              // smooth
-              spy={true}
-              // hashSpy={true}
-              // duration={500}
-            >
-              Portfolio
-            </Link>
-            <ActiveBar />
-          </li>
-          <li className="menuMobile__item">
-            <Link
-              onSetActive={elementActive}
-              activeClass="menuMobile__item--active"
-              to="contact"
-              // smooth
-              spy={true}
-              // hashSpy
-              // duration={500}
-            >
-              Contact
-            </Link>
-            <ActiveBar />
-          </li>
+          {layers.map((element, index) => {
+            return (
+              <li
+                key={element.name.toString()}
+                name={element.name}
+                onClick={handleClick}
+                className={`menuMobile__item `}
+              >
+                <span className="item--text" name={element.name}>
+                  {element.name}
+                </span>
+                <span
+                  className={`${
+                    viewSection === element.layer
+                      ? 'menuMobile__item--active'
+                      : 'menuMobile__item--close'
+                  }`}
+                >
+                  <ActiveBar />
+                </span>
+              </li>
+            );
+          })}
         </ul>
         {windowSize.height > 650 && (
           <ul
@@ -152,7 +78,7 @@ function MenuMobile(prop) {
           >
             {socialMedia.map((social, index) => (
               <ContactItem
-                key={index}
+                key={social.name.toString()}
                 url={social.url}
                 icon={social.icon}
                 name={social.name}

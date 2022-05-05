@@ -1,7 +1,7 @@
 import Section from '../components/Section';
-import SvgSwitch from '../components/SvgSwitch';
 import useParallax from '../hooks/useParallax';
 
+// eslint-disable-next-line react/prop-types
 function Parallax({ children }) {
   const offsetY = useParallax();
   return (
@@ -11,9 +11,9 @@ function Parallax({ children }) {
         style={{ transform: `translateY(-${offsetY * 1}px)` }}
       >
         <Section />
-        <Section backgroundPurple={true} />
+        <Section backgroundPurple />
         <Section />
-        <Section backgroundPurple={true}></Section>
+        <Section backgroundPurple />
         <Section />
       </div>
       <div

@@ -9,10 +9,11 @@ import Navigation from '../components/Navigation';
 function Header() {
   const window = useWindowSize();
   const menuUpdate = useMobileMenuUpdater();
+  // eslint-disable-next-line no-unused-vars
   const [isMenuMobileActive, setIsMenuMobileActive] = useState(false);
-  const handleClick = () => {
-    setIsMenuMobileActive(!isMenuMobileActive);
-  };
+  // const handleClick = () => {
+  //   setIsMenuMobileActive(!isMenuMobileActive);
+  // };
   return (
     <nav className="navigation">
       {window.width > 900 ? (
