@@ -1,0 +1,8 @@
+@use '../utils/' as utils;
+.activeBar {
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 15vw;
+  }
+}

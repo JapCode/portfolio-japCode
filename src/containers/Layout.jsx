@@ -1,14 +1,24 @@
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+// import Footer from '../components/Footer';
+import Header from './Header';
+import { MobileMenuProvider } from '../context/MobileMenuContext';
+import { ViewSectionProvider } from '../context/ViewSection';
+import { NavigationMenuProvider } from '../context/NavigationMenuContext';
 
 function Layout(props) {
-  const dotsColor = '#5A189A';
-  console.log('Layout');
+  // eslint-disable-next-line react/prop-types
+  const { children } = props;
   return (
     <>
-      <Header dotsColor={dotsColor} />
-      {props.children}
-      {/* <Footer arrowColor={arrowColor} /> */}
+      <ViewSectionProvider>
+        <NavigationMenuProvider>
+          <MobileMenuProvider>
+            <Header />
+          </MobileMenuProvider>
+          {children}
+
+          {/* <Footer /> */}
+        </NavigationMenuProvider>
+      </ViewSectionProvider>
     </>
   );
 }

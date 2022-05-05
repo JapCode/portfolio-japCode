@@ -6,7 +6,7 @@ function Section({ children, backgroundPurple }) {
   const [backgroundColor, setBackgroundColor] = useState('#5A189A');
   const purpleColor = '#54189a';
   const whiteColor = '#FFFFFF';
-  const setNewColor = useBackgroundColorUpdaterContext(backgroundColor);
+  useBackgroundColorUpdaterContext(backgroundColor);
   const [containRef, isVisible] = useIntersectionObserver({
     root: null,
     rootMargin: '0px',
@@ -25,19 +25,16 @@ function Section({ children, backgroundPurple }) {
     } else {
       setBackgroundColor(whiteColor);
     }
-  }, [isVisible]);
+  }, [isVisible, backgroundPurple]);
   return useMemo(() => {
-    {
-      console.log('Section');
-    }
     return (
       <>
         <div
           ref={containRef}
-          className={`sectionBackground }`}
+          className="sectionBackground }"
           style={{ backgroundColor: sectionStyle.backgroundColor }}
         >
-          <div className="cyberpunk" style={sectionStyle}></div>;
+          <div className="cyberpunk" style={sectionStyle} />;
           <section className="sectionContent">{children}</section>
         </div>
       </>

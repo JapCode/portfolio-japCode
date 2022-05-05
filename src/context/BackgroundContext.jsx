@@ -3,6 +3,7 @@ import { createContext, useMemo, useState } from 'react';
 const BackgroundColorStateContext = createContext();
 const BackgroundColorUpdaterContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 function BackgroundColorProvider({ children }) {
   const [backgroundColor, setBackgroundColor] = useState('#fff');
   return (

@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const DotenvWebpackPlugin = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
-    publicPath: '',
+    publicPath: '/',
     assetModuleFilename: 'assets/images/[hash][ext][query]',
     clean: true,
   },
@@ -54,6 +54,13 @@ module.exports = {
         type: 'asset',
         test: /\.(png|gif|jpg|jpeg|svg)$/i,
       },
+      {
+        test: /\.(woff|woff2)$/i, // Tipos de fuentes a incluir
+        type: 'asset/resource', // Tipo de módulo a usar (este mismo puede ser usado para archivos de imágenes)
+        generator: {
+          filename: 'assets/fonts/[hash][ext][query]', // Directorio de salida
+        },
+      },
     ],
   },
   devServer: {
@@ -76,6 +83,10 @@ module.exports = {
       filename: 'assets/styles/[name].css',
     }),
     new BundleAnalyzerPlugin(),
-    new DotenvWebpackPlugin(),
+    new Dotenv({
+      path: './.env',
+      systemvars: true,
+      safe: true,
+    }),
   ],
 };

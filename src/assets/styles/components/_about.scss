@@ -1,0 +1,42 @@
+@use '../utils/' as utils;
+
+.about {
+  @extend %section-content;
+  @include utils.respond-to(utils.$breakPoint-tablet) {
+    padding-left: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding-bottom: 20vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-left: 20vw;
+    padding-top: 17vh;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
+    width: 55vw;
+    padding-top: 0;
+  }
+  &__title {
+    @extend %section-content__title-purple;
+    @include utils.respond-to(utils.$breakPoint-desktop) {
+      text-align: start;
+      font-size: 7.2rem;
+    }
+  }
+  &__description {
+    @extend %description-content--gray;
+    width: 70%;
+    &:nth-child(3) {
+      padding-top: 0;
+    }
+    @include utils.respond-to(utils.$breakPoint-desktop) {
+      text-align: start;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@use '../utils/' as utils;
+
+.landingPurple {
+  @extend %section-content;
+  align-items: center;
+  @include utils.respond-to(utils.$breakPoint-desktop) {
+    padding-left: 10vw;
+    padding-bottom: 10vh;
+    width: 50vw;
+  }
+  @include utils.respond-to(utils.$breakPoint-large) {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding-left: 20vw;
+    padding-bottom: 25vh;
+  }
+
+  &__container {
+    // -webkit-transform: translateZ(-160px) translateY(500px);
+    // transform: translateZ(-160px) translateY(500px);
+  }
+  &__title {
+    @extend %section-content__title-white;
+    @include utils.respond-to(600px) {
+      padding: 0 74px;
+      text-align: start;
+      font-size: 7.2rem;
+    }
+  }
+  &__subtitle {
+    // text-align: center;
+    padding: 30px 0px 0;
+    font-family: utils.$base-font-regular;
+    font-size: utils.$text-size;
+    color: utils.$color-clean;
+    // font-family: Inter;
+    // font-style: normal;
+    // font-weight: normal;
+    font-size: 36px;
+    line-height: 44px;
+    // animation: neonPulse 5s forwards infinite;
+    @include utils.respond-to(600px) {
+      text-align: start;
+      padding: 0 74px;
+    }
+  }
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow: utils.$text-shadow-enabled;
+  }
+  50% {
+    text-shadow: utils.$text-shadow-disabled;
+  }
+  100% {
+    text-shadow: utils.$text-shadow-enabled;
+  }
+}

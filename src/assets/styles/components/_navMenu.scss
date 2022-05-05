@@ -1,0 +1,29 @@
+@use '../utils/' as utils;
+.navMenu {
+  height: 80px;
+  position: fixed;
+  display: flex;
+  right: 0;
+  align-items: center;
+  gap: 25px;
+  padding-right: 10vw;
+  &--gray {
+    color: utils.$color-gray;
+  }
+  &--white {
+    color: utils.$color-clean;
+  }
+  &__item {
+    font-size: utils.$little-title-size;
+    list-style: none;
+    cursor: pointer;
+    a {
+      // height: 20px;
+      // padding-bottom: 5px;
+    }
+    &--active {
+      border-bottom: 3px solid utils.$color-secondary;
+      // transform: skew(60deg);
+    }
+  }
+}

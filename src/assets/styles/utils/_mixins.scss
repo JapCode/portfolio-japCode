@@ -1,0 +1,18 @@
+@mixin keyframes($animationName) {
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+@mixin respond-to($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+@mixin respondHeight-to($height) {
+  @media only screen and (min-height: $height) {
+    @content;
+  }
+}

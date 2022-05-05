@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 import { BackgroundColorStateContext } from '../context/BackgroundContext';
 
 // const BackgroundColorStateContext = createContext();
