@@ -15,13 +15,11 @@ import Contact from '../containers/Contact';
 import Landing from '../containers/Landing';
 import Projects from '../containers/Projects';
 import Skills from '../containers/Skills';
-import useIntersectionObserver from '../hooks/UseIntersectionObserver';
 import useNavigationMenuState from '../hooks/UseNavigationMenuState';
 import useViewSectionUpdater from '../hooks/UseViewSectionUpdater';
 import useWindowSize from '../hooks/UseWindowSize';
 
 function Home() {
-  // const [active, setActive] = useState(true);
   const windowSize = useWindowSize();
   const parallaxRef = useRef(null);
   const parallaxLayerRef = useRef(null);
@@ -30,33 +28,18 @@ function Home() {
   useViewSectionUpdater(viewLayer);
   const navigationState = useNavigationMenuState();
   const [mobile, setMobile] = useState(false);
-  // const [skillActive, setSkillActive] = useState(false);
   const [contactFactor, setContactFactor] = useState(1);
   let offsetTry;
-  const [containRef, isVisible] = useIntersectionObserver({
-    rootMargin: '0px',
-    threshold: 0.8,
-  });
-  // let offsetParallax;
   const [numberPage, setNumberPage] = useState(6);
 
-  // const skillsFactor = 1;
-  // let contactFactor = 1;
-  // const portfolioOffset = 4;
-  // const contactOffset = 5;
-  // let numberPage = 6;
   useEffect(() => {
     if (windowSize.height < 600) {
       setNumberPage(6.1);
-      // numberPage = 6.2;
-      // contactFactor = 1.1;
-      // numberPage = 6.2;
       setMobile(false);
       setContactFactor(1.1);
     } else {
       setNumberPage(6);
       setContactFactor(1);
-      // contactFactor = 1.2;
       setMobile(true);
     }
   }, [windowSize]);
@@ -138,11 +121,6 @@ function Home() {
       parallaxRef.current.container.current.onscroll = null;
     };
   }, []);
-  // useEffect(() => {
-  //   if (svgRef.current !== null) {
-  //     console.log(svgRef.current);
-  //   }
-  // }, [offsetTry]);
 
   return useMemo(() => {
     return (
@@ -189,9 +167,7 @@ function Home() {
               {mobile && <IrregularBorder />}
             </ParallaxLayer>
             <ParallaxLayer className="parallaxAbout" offset={2} speed={1}>
-              <div ref={containRef}>
-                <BongoCat visible={isVisible} />
-              </div>
+              <BongoCat />
             </ParallaxLayer>
             <ParallaxLayer offset={2} speed={0.5}>
               <About />
@@ -249,7 +225,7 @@ function Home() {
         </section>
       </>
     );
-  }, [windowSize, mobile, contactFactor, isVisible, numberPage]);
+  }, [windowSize, mobile, contactFactor, numberPage]);
 }
 
 export default Home;

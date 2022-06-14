@@ -9,10 +9,14 @@ function useIntersectionObserver(options, value = false) {
     setIsVisible(entry.isIntersecting);
   }
   useEffect(() => {
+    let observerRefValue = null;
     const observer = new IntersectionObserver(callbackFunction, options);
-    if (containerRef.current) observer.observe(containerRef.current);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+      observerRefValue = containerRef.current;
+    }
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (observerRefValue) observer.unobserve(observerRefValue);
     };
   }, [containerRef, options]);
   return [containerRef, isVisible];
