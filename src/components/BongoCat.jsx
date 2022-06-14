@@ -32,7 +32,6 @@ const BongoCat = forwardRef((prop, ref) => {
   }, [bongoCatInterval, config]);
 
   useEffect(() => {
-    console.log(isVisible);
     if (!isVisible) {
       if (bongoCatInterval.current) {
         clearInterval(bongoCatInterval.current);
@@ -151,7 +150,6 @@ const BongoCat = forwardRef((prop, ref) => {
             </g>
             <g>
               <path
-                // ref={containerRef}
                 className="table"
                 d="M0.0057373 34.87L0.0107117 126.294H270.391L270.39 102.153L0.0057373 34.87Z"
                 fill="white"
