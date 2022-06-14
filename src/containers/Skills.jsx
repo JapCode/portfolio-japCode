@@ -42,7 +42,7 @@ function Skills() {
             <PrincipalButton btnAction={handleClick}>Show more</PrincipalButton>
           </>
         ) : (
-          <SkillsContainer />
+          <>{windowSize.width > 900 ? <SkillsContainer /> : ''}</>
         )}
         {windowSize.width > 900 ? (
           ''

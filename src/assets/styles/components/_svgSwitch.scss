@@ -10,19 +10,40 @@
     height: 387px;
   }
   // transition: all 3s ease-in-out;
-  &__front {
-  }
+  // &__front {
+  //   transition: all 1s linear;
+  //   // fill: utils.$color-clean;
+  //   &--bg {
+  //     fill: utils.$color-clean;
+  //   }
+  //   &--fillStroke {
+  //     fill: utils.$color-clean-gray;
+  //   }
+  //   &--stroke {
+  //     fill: utils.$color-clean-gray;
+  //     stroke: utils.$color-clean-gray;
+  //   }
+  //   &--stroke-2 {
+  //     stroke: utils.$color-clean-gray;
+  //   }
+  // }
   &__back,
   &__top,
   &__front {
     transition: all 1s linear;
-    -webkit-transition: all 1s linear;
-    -moz-transition: all 1s linear;
-    -ms-transition: all 1s linear;
-    -o-transition: all 1s linear;
-    fill: utils.$color-clean;
+    // fill: utils.$color-clean;
+    &--bg {
+      fill: utils.$color-clean;
+    }
+    &--fillStroke {
+      fill: utils.$color-clean-gray;
+    }
     &--stroke {
       fill: utils.$color-clean-gray;
+      stroke: utils.$color-clean-gray;
+    }
+    &--stroke-2 {
+      stroke: utils.$color-clean-gray;
     }
   }
   &.purple {
@@ -30,9 +51,18 @@
       &__back,
       &__top,
       &__front {
-        fill: utils.$color-cleanPurple;
+        &--bg {
+          fill: utils.$color-cleanPurple;
+        }
+        &--fillStroke {
+          fill: utils.$color-secondPurple;
+        }
         &--stroke {
           fill: utils.$color-secondPurple;
+          stroke: utils.$color-secondPurple;
+        }
+        &--stroke-2 {
+          stroke: utils.$color-secondPurple;
         }
       }
     }
@@ -40,11 +70,11 @@
 }
 .switchTranslate {
   transition: all 1s ease-in-out;
-  transform: translate(calc(50% - 84.38px), 0);
+  transform: translate(calc(50% - 220.45px), 0);
   // transform: translateX(calc(50% - 84.38px));
   // transform: translateY(15px);
   &--active {
-    transform: translate(calc(50% - 84.38px), 15px);
+    transform: translate(calc(50% - 220.45px), 15px);
     // transform: translateX(calc(50% - 84.38px));
     // transform: translateY(15px);
     // animation: switchTranslate 1s ease-in-out;

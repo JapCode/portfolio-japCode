@@ -16,9 +16,10 @@ function calcArrays(numberColumns, originalArray, destinyArray) {
       destinyArray.push(myArray);
     }
   } else {
-    throw new Error('Array is not empty');
+    // throw new Error('Array is not empty');
+    // console.log(destinyArray);
+    // destinyArray.pop();
     // destinyArray = [];
-    // destinyArray.pop;
   }
 }
 function SkillsContainer() {
