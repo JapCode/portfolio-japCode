@@ -95,7 +95,7 @@ function Projects() {
     <div className="portfolio">
       <span className="title--container">
         <TitleDecorator />
-        <h1 className="portfolio__title">Portafolio</h1>
+        <h1 className="portfolio__title">Portfolio</h1>
       </span>
       <div className="portfolio__cardsContainer">
         {windowSize.width > 900 && projects ? (

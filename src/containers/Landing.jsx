@@ -9,8 +9,8 @@ function Landing() {
           alt="hello friend"
         />
         <p className="landing__subtitle">
-          bienvenido a mi portafolio espero disfrutes tu estadia aca, puedes
-          comenzar haciendo scroll
+          Welcome to my portfolio, i hope you enjoy your time here, you can
+          start by scrolling.
         </p>
       </div>
     </>

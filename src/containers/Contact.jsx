@@ -52,12 +52,11 @@ function Contact(prop) {
         {/* ${isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'} */}
         <span className="title--container">
           <TitleDecorator />
-          <h1 className="contact__title">Contacto</h1>
+          <h1 className="contact__title">Contact</h1>
         </span>
         <p className="contact__description">
-          hey si te gusto algo que viste aca no dudes en contactarte conmigo y
-          si estas aprendiendo algo en lo que yo tenga experiencia o necesitas
-          ayuda en un projecto escribe con gusto te ayudare en lo que pueda
+          Hey if i get you attention don’t hesitate to put in contact with me to
+          talk and share ideas, ill be happy to help you in any way i can.
         </p>
         <ul className="contact__socialMedia">
           {socialMedia.map((social, index) => (
@@ -71,10 +70,9 @@ function Contact(prop) {
           ))}
         </ul>
         <p className="contact__description">
-          y si quieres mandar un mensaje mas directo y formal puedes enviarme un
-          mensaje a mi correo
+          If you want send a direct message you can contact me on my email.
         </p>
-        <PrincipalButton btnAction={onOpen}>Mensaje</PrincipalButton>
+        <PrincipalButton btnAction={onOpen}>Message</PrincipalButton>
       </div>
       <ContactModal onClose={onClose} isOpen={isOpen}>
         {response ? (

@@ -64,10 +64,11 @@
     font-size: utils.$text-size;
     color: utils.$color-gray;
     @include utils.respond-to(utils.$breakPoint-tablet) {
+      font-size: utils.$text-size-big;
       width: 50%;
     }
     @include utils.respond-to(utils.$breakPoint-desktop) {
-      width: 100%;
+      width: 80%;
       text-align: start;
     }
     @include utils.respond-to(utils.$breakPoint-large) {

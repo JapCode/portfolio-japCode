@@ -1,7 +1,7 @@
 @use '../utils/' as utils;
 
 .skills {
-  padding-top: 40vh;
+  padding-top: 15vh;
   @extend %section-content;
   @include utils.respond-to(utils.$breakPoint-tablet) {
     padding-top: 0;
@@ -16,7 +16,9 @@
   @include utils.respond-to(utils.$breakPoint-desktop) {
     width: 67vw;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
+    margin-top: 20vh;
+    justify-content: start;
     align-items: start;
     padding-left: 20vw;
     // padding-bottom: 20vh;

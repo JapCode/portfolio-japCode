@@ -25,19 +25,18 @@ function About(prop) {
         {/* ${isVisible ? 'slide-fwd-top' : 'slide-fwd-bottom'} */}
         <span className="title--container">
           <TitleDecorator />
-          <h1 className="about__title">Sobre mi</h1>
+          <h1 className="about__title">About me</h1>
         </span>
         <p className="about__description">
-          soy un desarrollador interezado en seguir expandiendo mis
-          conocimientos en tecnologia y crear software que sean de utilidad para
-          otros
+          I’m a development with interest in expand my knowledge in technologies
+          and create utility software for other and to have fun in the process.
         </p>
         {isOpen ? (
           <p className="about__description">
-            soy mas que solo una persona apasionada por la tecnologia que reside
-            en una ciudad de Venezuela, entre mis muchos intereses y pasatiempos
-            estan los telclados mecanicos, comics, manga, anime, juegos de mesa,
-            videojuegos, entre otros
+            At the moment i live in Venezuela and i divide my free time to
+            learning new things of my interest, read light novels, watch an
+            anime or play some videogame, always i ready to talk about some
+            topics of geek culture with friends.
           </p>
         ) : (
           ''

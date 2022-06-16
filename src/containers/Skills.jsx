@@ -33,11 +33,20 @@ function Skills() {
         </span>
         {!isOpen ? (
           <>
-            <p className="skills__description">
-              como frontend-developer poseo las habilidades basicas y esenciales
-              o sease html, css, js y git ademas de habilidades y conocimientos
-              complementarios para backend y diseño ademas de siempre estar en
-              continua busqueda de conocer nuevas cosas y mejora de las actuales
+            <p
+              style={{ paddingBottom: '10px' }}
+              className="skills__description"
+            >
+              As a Software Developer i have basic knowledge skills and concepts
+              how example, data structure and algorithms, version control
+              system, networks, testing, cypher and cryptography, system
+              development life cycle, database, and others.
+            </p>
+            <p style={{ paddingTop: '10px' }} className="skills__description">
+              I’m mainly dedicated in web development on the frontend side with
+              solid knowledge in JavaScript, CSS and HTML, managing frameworks
+              and libraries for a better experience and time in development. you
+              can see some skills below.
             </p>
             <PrincipalButton btnAction={handleClick}>Show more</PrincipalButton>
           </>
